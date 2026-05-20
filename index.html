@@ -19,6 +19,23 @@ body{
     justify-content:center;
     align-items:center;
     background:#e0e5ec;
+    overflow:hidden;
+}
+
+/* efek fade */
+body.fade-out{
+    animation:fadeOut 1s forwards;
+}
+
+@keyframes fadeOut{
+    from{
+        opacity:1;
+        transform:scale(1);
+    }
+    to{
+        opacity:0;
+        transform:scale(1.1);
+    }
 }
 
 .login-box{
@@ -29,6 +46,18 @@ body{
     box-shadow:
         10px 10px 20px #b8bec7,
         -10px -10px 20px #ffffff;
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .login-box h2{
@@ -71,6 +100,7 @@ button{
 }
 
 button:hover{
+    transform:scale(0.98);
     box-shadow:
         inset 5px 5px 10px #b8bec7,
         inset -5px -5px 10px #ffffff;
@@ -95,7 +125,7 @@ button:hover{
 <body>
 
 <div class="login-box">
-    <h2>EllenioFam.</h2>
+    <h2>EllenioFam App</h2>
 
     <div class="input-box">
         <input type="text" id="username" placeholder="Username">
@@ -122,8 +152,13 @@ function login(){
 
     if(username === "ellenio" && password === "admin1234"){
 
-        // pindah ke halaman berikutnya
-        window.location.href = "home.html";
+        // animasi transisi
+        document.body.classList.add("fade-out");
+
+        // pindah halaman setelah animasi selesai
+        setTimeout(() => {
+            window.location.href = "home.html";
+        }, 1000);
 
     } else {
 
