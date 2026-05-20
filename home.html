@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home - EllenioFam</title>
+<title>EllenioFam</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -20,6 +21,7 @@ body{
 }
 
 /* NAVBAR */
+
 nav{
     position:fixed;
     top:0;
@@ -49,6 +51,7 @@ nav a:hover{
 }
 
 /* PARALLAX */
+
 .parallax{
     height:100vh;
     background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
@@ -84,13 +87,14 @@ nav a:hover{
 }
 
 /* SECTION */
+
 .section{
     padding:100px 30px;
     text-align:center;
 }
 
 .box{
-    max-width:800px;
+    max-width:900px;
     margin:auto;
     padding:40px;
     border-radius:25px;
@@ -105,7 +109,52 @@ nav a:hover{
     margin-bottom:20px;
 }
 
-/* ANIMASI */
+/* DROPDOWN */
+
+select{
+    padding:15px 20px;
+    border:none;
+    border-radius:15px;
+    margin-bottom:30px;
+    background:#e0e5ec;
+    font-size:16px;
+    outline:none;
+
+    box-shadow:
+        5px 5px 10px #b8bec7,
+        -5px -5px 10px #ffffff;
+}
+
+/* GRID */
+
+.ktp-container{
+    display:none;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+/* CARD */
+
+.ktp-card{
+    padding:30px 20px;
+    border-radius:20px;
+    background:#e0e5ec;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+
+    box-shadow:
+        10px 10px 20px #b8bec7,
+        -10px -10px 20px #ffffff;
+}
+
+.ktp-card:hover{
+    transform:translateY(-5px);
+}
+
+/* ANIMATION */
+
 @keyframes fadeIn{
     from{
         opacity:0;
@@ -118,6 +167,7 @@ nav a:hover{
 }
 
 /* RESPONSIVE */
+
 @media(max-width:768px){
 
     nav{
@@ -133,64 +183,170 @@ nav a:hover{
         font-size:16px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
+
 <nav>
+
     <a href="#beranda">Beranda</a>
     <a href="#keluarga">Data Keluarga</a>
     <a href="#tentang">Tentang</a>
+
 </nav>
 
 <!-- PARALLAX -->
+
 <section class="parallax" id="beranda">
 
     <div class="overlay">
+
         <h1>Parallax Page</h1>
 
         <p>
             Selamat datang di website EllenioFam.
-            Halaman ini menggunakan efek parallax modern
-            dengan desain neumorphism yang lembut dan elegan.
-            Website ini dibuat menggunakan HTML dan CSS
-            sederhana namun tetap terlihat modern dan smooth.
+            Website ini menggunakan desain neumorphism,
+            efek parallax modern, dan animasi smooth
+            menggunakan HTML, CSS, dan JavaScript.
         </p>
+
     </div>
 
 </section>
 
 <!-- DATA KELUARGA -->
+
 <section class="section" id="keluarga">
 
     <div class="box">
+
         <h2>Data Keluarga</h2>
 
-        <p>
-            Halaman ini dapat digunakan untuk menampilkan
-            data anggota keluarga, biodata, foto keluarga,
-            silsilah keluarga, dan informasi lainnya.
+        <p style="margin-bottom:30px;">
+            Pilih nama anggota keluarga untuk melihat data KTP.
         </p>
+
+        <!-- DROPDOWN -->
+
+        <select id="familySelect" onchange="showData()">
+
+            <option value="">-- Pilih Nama --</option>
+
+            <option value="evan">Evan Jusephca</option>
+
+            <option value="ellenio">Ruth Camy Therecia</option>
+
+            <option value="camy">Ellenio Athreus</option>
+
+        </select>
+
+        <!-- DATA EVAN -->
+
+        <div id="evanData" class="ktp-container">
+
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KK</div>
+            <div class="ktp-card">NPWP</div>
+            <div class="ktp-card">SIM</div>
+
+            <div class="ktp-card">IJAZAH</div>
+            <div class="ktp-card">BPJS</div>
+            <div class="ktp-card">SERTIFIKAT</div>
+            <div class="ktp-card">DLL</div>
+
+        </div>
+
+        <!-- DATA ELLENIO -->
+
+        <div id="ellenioData" class="ktp-container">
+
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+
+        </div>
+
+        <!-- DATA CAMY -->
+
+        <div id="camyData" class="ktp-container">
+
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+            <div class="ktp-card">KTP</div>
+
+        </div>
+
     </div>
 
 </section>
 
 <!-- TENTANG -->
+
 <section class="section" id="tentang">
 
     <div class="box">
+
         <h2>Tentang</h2>
 
         <p>
-            Website ini dibuat oleh EvanJusephca menggunakan
-            GitHub Pages dengan tampilan neumorphism modern,
-            animasi smooth, dan efek parallax fullscreen.
+            Website ini dibuat oleh EvanJusephca
+            menggunakan GitHub Pages dengan tampilan
+            neumorphism modern, smooth animation,
+            dan parallax fullscreen.
         </p>
+
     </div>
 
 </section>
+
+<!-- SCRIPT -->
+
+<script>
+
+function showData(){
+
+    let value = document.getElementById("familySelect").value;
+
+    let evan = document.getElementById("evanData");
+
+    let ellenio = document.getElementById("ellenioData");
+
+    let camy = document.getElementById("camyData");
+
+    evan.style.display = "none";
+    ellenio.style.display = "none";
+    camy.style.display = "none";
+
+    if(value === "evan"){
+        evan.style.display = "grid";
+    }
+
+    if(value === "ellenio"){
+        ellenio.style.display = "grid";
+    }
+
+    if(value === "camy"){
+        camy.style.display = "grid";
+    }
+}
+
+</script>
 
 </body>
 </html>
