@@ -3,50 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+<title>Home - EllenioFam</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    scroll-behavior:smooth;
+}
+
 body{
     background:#e0e5ec;
+    color:#333;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    background:rgba(224,229,236,0.9);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+
+    box-shadow:
+        5px 5px 10px #b8bec7,
+        -5px -5px 10px #ffffff;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    transform:scale(1.1);
+}
+
+/* PARALLAX */
+.parallax{
+    height:100vh;
+    background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+    background-attachment:fixed;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
-    font-family:Arial;
-    overflow:hidden;
+    text-align:center;
+    padding:20px;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.5);
+    padding:40px;
+    border-radius:25px;
+    color:white;
+    animation:fadeIn 1.5s ease;
+}
+
+.overlay h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.overlay p{
+    max-width:700px;
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* SECTION */
+.section{
+    padding:100px 30px;
+    text-align:center;
 }
 
 .box{
+    max-width:800px;
+    margin:auto;
     padding:40px;
-    border-radius:20px;
+    border-radius:25px;
     background:#e0e5ec;
+
     box-shadow:
         10px 10px 20px #b8bec7,
         -10px -10px 20px #ffffff;
-    text-align:center;
-
-    animation:smoothShow 1s ease;
 }
 
-@keyframes smoothShow{
+.box h2{
+    margin-bottom:20px;
+}
+
+/* ANIMASI */
+@keyframes fadeIn{
     from{
         opacity:0;
-        transform:translateY(40px);
+        transform:translateY(30px);
     }
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
-</style>
 
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    nav{
+        gap:20px;
+        font-size:14px;
+    }
+
+    .overlay h1{
+        font-size:35px;
+    }
+
+    .overlay p{
+        font-size:16px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<div class="box">
-    <h1>Welcome EllenioFam 👋</h1>
-    <p>Login berhasil dengan transisi smooth.</p>
-</div>
+<!-- NAVBAR -->
+<nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#keluarga">Data Keluarga</a>
+    <a href="#tentang">Tentang</a>
+</nav>
+
+<!-- PARALLAX -->
+<section class="parallax" id="beranda">
+
+    <div class="overlay">
+        <h1>Parallax Page</h1>
+
+        <p>
+            Selamat datang di website EllenioFam.
+            Halaman ini menggunakan efek parallax modern
+            dengan desain neumorphism yang lembut dan elegan.
+            Website ini dibuat menggunakan HTML dan CSS
+            sederhana namun tetap terlihat modern dan smooth.
+        </p>
+    </div>
+
+</section>
+
+<!-- DATA KELUARGA -->
+<section class="section" id="keluarga">
+
+    <div class="box">
+        <h2>Data Keluarga</h2>
+
+        <p>
+            Halaman ini dapat digunakan untuk menampilkan
+            data anggota keluarga, biodata, foto keluarga,
+            silsilah keluarga, dan informasi lainnya.
+        </p>
+    </div>
+
+</section>
+
+<!-- TENTANG -->
+<section class="section" id="tentang">
+
+    <div class="box">
+        <h2>Tentang</h2>
+
+        <p>
+            Website ini dibuat oleh EvanJusephca menggunakan
+            GitHub Pages dengan tampilan neumorphism modern,
+            animasi smooth, dan efek parallax fullscreen.
+        </p>
+    </div>
+
+</section>
 
 </body>
 </html>
