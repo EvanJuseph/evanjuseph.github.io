@@ -82,6 +82,13 @@ button:hover{
     color:#666;
     font-size:14px;
 }
+
+#error{
+    color:red;
+    text-align:center;
+    margin-top:15px;
+    font-size:14px;
+}
 </style>
 </head>
 
@@ -91,19 +98,41 @@ button:hover{
     <h2>EllenioFam.</h2>
 
     <div class="input-box">
-        <input type="text" placeholder="Username">
+        <input type="text" id="username" placeholder="Username">
     </div>
 
     <div class="input-box">
-        <input type="password" placeholder="Password">
+        <input type="password" id="password" placeholder="Password">
     </div>
 
-    <button>LOG IN</button>
+    <button onclick="login()">LOG IN</button>
+
+    <div id="error"></div>
 
     <div class="footer">
         created by evanjusephca
     </div>
 </div>
+
+<script>
+function login(){
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if(username === "ellenio" && password === "admin1234"){
+
+        // pindah ke halaman berikutnya
+        window.location.href = "home.html";
+
+    } else {
+
+        document.getElementById("error").innerHTML =
+        "Username atau Password salah!";
+
+    }
+}
+</script>
 
 </body>
 </html>
