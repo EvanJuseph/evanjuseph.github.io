@@ -13,6 +13,7 @@ body{
     align-items:center;
     height:100vh;
     font-family:Arial;
+    overflow:hidden;
 }
 
 .box{
@@ -23,6 +24,19 @@ body{
         10px 10px 20px #b8bec7,
         -10px -10px 20px #ffffff;
     text-align:center;
+
+    animation:smoothShow 1s ease;
+}
+
+@keyframes smoothShow{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 </style>
 
@@ -30,8 +44,8 @@ body{
 <body>
 
 <div class="box">
-    <h1>Selamat Datang di EllenioFam App 👋</h1>
-    <p>Login Berhasil!</p>
+    <h1>Welcome EllenioFam 👋</h1>
+    <p>Login berhasil dengan transisi smooth.</p>
 </div>
 
 </body>
