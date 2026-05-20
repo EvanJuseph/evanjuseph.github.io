@@ -1,10 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Website Evan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Neumorphism</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#e0e5ec;
+}
+
+.login-box{
+    width:350px;
+    padding:40px;
+    border-radius:25px;
+    background:#e0e5ec;
+    box-shadow:
+        10px 10px 20px #b8bec7,
+        -10px -10px 20px #ffffff;
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#333;
+}
+
+.input-box{
+    margin-bottom:20px;
+}
+
+.input-box input{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:#e0e5ec;
+    box-shadow:
+        inset 5px 5px 10px #b8bec7,
+        inset -5px -5px 10px #ffffff;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:#e0e5ec;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+    box-shadow:
+        5px 5px 10px #b8bec7,
+        -5px -5px 10px #ffffff;
+    transition:0.2s;
+}
+
+button:hover{
+    box-shadow:
+        inset 5px 5px 10px #b8bec7,
+        inset -5px -5px 10px #ffffff;
+}
+
+.footer{
+    margin-top:20px;
+    text-align:center;
+    color:#666;
+    font-size:14px;
+}
+</style>
 </head>
+
 <body>
-    <h1>Halo Evan 👋</h1>
-    <p>Website pertama di GitHub Pages.</p>
+
+<div class="login-box">
+    <h2>Login User</h2>
+
+    <div class="input-box">
+        <input type="text" placeholder="Username">
+    </div>
+
+    <div class="input-box">
+        <input type="password" placeholder="Password">
+    </div>
+
+    <button>LOGIN</button>
+
+    <div class="footer">
+        EvanJuseph.github.io
+    </div>
+</div>
+
 </body>
 </html>
