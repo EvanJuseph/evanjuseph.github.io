@@ -109,10 +109,10 @@ nav a:hover{
     margin-bottom:20px;
 }
 
-/* DROPDOWN */
+/* DROPDOWN MODERN */
 
 .dropdown{
-    max-width:420px;
+    max-width:400px;
     margin:40px auto;
     position:relative;
 }
@@ -127,25 +127,15 @@ nav a:hover{
     justify-content:space-between;
     align-items:center;
 
-    border:1px solid rgba(255,255,255,0.4);
-
     box-shadow:
-        12px 12px 24px #b8bec7,
-        -12px -12px 24px #ffffff,
-        inset 1px 1px 2px rgba(255,255,255,0.7),
-        inset -1px -1px 2px rgba(0,0,0,0.05);
+        8px 8px 15px #b8bec7,
+        -8px -8px 15px #ffffff;
 
-    transition:0.35s ease;
+    transition:0.3s;
 }
 
 .dropdown-header:hover{
-    transform:translateY(-3px) scale(1.01);
-
-    box-shadow:
-        16px 16px 30px #b8bec7,
-        -16px -16px 30px #ffffff,
-        inset 1px 1px 2px rgba(255,255,255,0.7),
-        inset -1px -1px 2px rgba(0,0,0,0.05);
+    transform:translateY(-2px);
 }
 
 .dropdown-content{
@@ -159,44 +149,37 @@ nav a:hover{
         margin-top 0.3s ease;
 
     margin-top:0;
+
     border-radius:20px;
 }
 
 .dropdown-content.show{
-    max-height:400px;
+    max-height:300px;
     opacity:1;
-    margin-top:20px;
+    margin-top:15px;
 }
-
-/* ITEM NAMA */
 
 .dropdown-content div{
     padding:18px;
     margin-bottom:15px;
     border-radius:18px;
     cursor:pointer;
-    color:#6b7280;
+    color: grey;
     background:#e0e5ec;
 
-    border:1px solid rgba(255,255,255,0.5);
-
     box-shadow:
-        10px 10px 20px #b8bec7,
-        -10px -10px 20px #ffffff,
-        inset 1px 1px 2px rgba(255,255,255,0.8),
-        inset -1px -1px 2px rgba(0,0,0,0.04);
+        8px 8px 15px #b8bec7,
+        -8px -8px 15px #e0e5ec;
 
-    transition:0.35s ease;
+    transition:0.3s;
 }
 
 .dropdown-content div:hover{
-    transform:translateY(-3px) scale(1.02);
+    transform:scale(0.98);
 
     box-shadow:
-        14px 14px 25px #b8bec7,
-        -14px -14px 25px #ffffff,
-        inset 3px 3px 6px #b8bec7,
-        inset -3px -3px 6px #ffffff;
+        inset 5px 5px 10px #b8bec7,
+        inset -5px -5px 10px #ffffff;
 }
 
 /* FAMILY DATA */
@@ -285,10 +268,6 @@ nav a:hover{
 
     .overlay p{
         font-size:16px;
-    }
-
-    .dropdown{
-        max-width:100%;
     }
 }
 
