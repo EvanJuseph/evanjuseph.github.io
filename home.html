@@ -57,9 +57,11 @@ nav a:hover{
 
 .parallax{
     height:100vh;
+
     background-image:url('https://drive.google.com/thumbnail?id=12nqktCOyda-U9lIwtYvJFVTNhIuO_QfN&sz=w2000');
+
     background-attachment:fixed;
-    background-position:center;
+    background-position:center center;
     background-repeat:no-repeat;
     background-size:cover;
 
@@ -68,14 +70,18 @@ nav a:hover{
     align-items:center;
     text-align:center;
     padding:20px;
+
+    position:relative;
 }
 
 .overlay{
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.55);
     padding:40px;
     border-radius:25px;
     color:white;
     animation:fadeIn 1.5s ease;
+
+    backdrop-filter:blur(5px);
 }
 
 .overlay h1{
@@ -277,6 +283,17 @@ nav a:hover{
     transform:rotate(180deg);
 }
 
+/* DESKTOP FLEXIBLE */
+
+@media(min-width:1200px){
+
+    .parallax{
+        background-size:100% auto;
+        background-position:center center;
+    }
+
+}
+
 /* RESPONSIVE */
 
 @media(max-width:768px){
@@ -286,12 +303,22 @@ nav a:hover{
         font-size:14px;
     }
 
+    .overlay{
+        padding:30px;
+    }
+
     .overlay h1{
         font-size:35px;
     }
 
     .overlay p{
         font-size:16px;
+    }
+
+    .parallax{
+        background-size:cover;
+        background-position:center;
+        background-attachment:scroll;
     }
 }
 
