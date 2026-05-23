@@ -410,8 +410,6 @@ nav a:hover{
         drop-shadow(0 0 12px rgba(255,159,90,0.5));
 }
 
-/* CLICK EFFECT */
-
 .float-item:active svg{
     transform:scale(0.92);
 }
@@ -433,7 +431,7 @@ body.dark-mode nav{
 
 body.dark-mode .box,
 body.dark-mode .dropdown-header,
-
+body.dark-mode .dropdown-content div,
 body.dark-mode .ktp-card{
     background:#1f2937;
     color:#d1d5db;
@@ -442,12 +440,7 @@ body.dark-mode .ktp-card{
         10px 10px 20px #111827,
         -10px -10px 20px #374151;
 }
-    
-body.dark-mode .dropdown-content div{
-    background:#1f2937;
-    color:#d1d5db;
-}
-    
+
 body.dark-mode nav a,
 body.dark-mode .box h2,
 body.dark-mode .ktp-card,
@@ -532,8 +525,6 @@ body.dark-mode .box p{
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
     <a href="#beranda">Beranda</a>
@@ -541,8 +532,6 @@ body.dark-mode .box p{
     <a href="#tentang">Tentang</a>
 
 </nav>
-
-<!-- PARALLAX -->
 
 <section class="parallax" id="beranda">
 
@@ -560,8 +549,6 @@ body.dark-mode .box p{
     </div>
 
 </section>
-
-<!-- DATA KELUARGA -->
 
 <section class="section" id="keluarga">
 
@@ -603,11 +590,114 @@ body.dark-mode .box p{
 
         </div>
 
+        <!-- DATA EVAN -->
+
+        <div id="evanData" class="family-data">
+
+            <div class="ktp-container">
+
+                <div class="ktp-card"
+                onclick="window.open('https://google.com')">
+                    KTP
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://drive.google.com')">
+                    KK
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://github.com')">
+                    NPWP
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://youtube.com')">
+                    SIM
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://facebook.com')">
+                    IJAZAH
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://instagram.com')">
+                    BPJS
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://x.com')">
+                    SERTIFIKAT
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DATA ELLENIO -->
+
+        <div id="ellenioData" class="family-data">
+
+            <div class="ktp-container">
+
+                <div class="ktp-card"
+                onclick="window.open('https://google.com')">
+                    KTP
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://drive.google.com')">
+                    KK
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://github.com')">
+                    AKTA
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://youtube.com')">
+                    BPJS
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DATA CAMY -->
+
+        <div id="camyData" class="family-data">
+
+            <div class="ktp-container">
+
+                <div class="ktp-card"
+                onclick="window.open('https://google.com')">
+                    KTP
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://drive.google.com')">
+                    KK
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://github.com')">
+                    AKTA
+                </div>
+
+                <div class="ktp-card"
+                onclick="window.open('https://youtube.com')">
+                    RAPORT
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
-
-<!-- TENTANG -->
 
 <section class="section" id="tentang">
 
@@ -635,8 +725,7 @@ body.dark-mode .box p{
         onclick="toggleDarkMode()">
 
             <svg viewBox="0 0 24 24" fill="none">
-                <path d="M21 12.8A9 9 0 1111.2 3
-                7 7 0 0021 12.8Z"/>
+                <path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8Z"/>
             </svg>
 
         </div>
@@ -647,19 +736,19 @@ body.dark-mode .box p{
         onclick="goLogin()">
 
             <svg viewBox="0 0 24 24" fill="none">
+
                 <rect x="5" y="11"
                 width="14"
                 height="10"
                 rx="3"/>
 
                 <path d="M8 11V8a4 4 0 118 0v3"/>
+
             </svg>
 
         </div>
 
     </div>
-
-    <!-- BUTTON -->
 
     <div class="floating-btn"
     onclick="toggleMenu()">
@@ -667,8 +756,6 @@ body.dark-mode .box p{
     </div>
 
 </div>
-
-<!-- SCRIPT -->
 
 <script>
 
@@ -689,6 +776,16 @@ function showData(name, element){
 
     document.getElementById("selectedText")
     .innerHTML = element.innerHTML;
+
+    const allData =
+    document.querySelectorAll(".family-data");
+
+    allData.forEach(item=>{
+        item.classList.remove("show");
+    });
+
+    document.getElementById(name + "Data")
+    .classList.add("show");
 
     document
     .getElementById("dropdownContent")
