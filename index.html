@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Ellenio Family App.</title>
+
+<title>Login Ellenio Family App</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Poppins', sans-serif;
 }
 
 body{
@@ -22,7 +26,8 @@ body{
     overflow:hidden;
 }
 
-/* efek fade */
+/* FADE */
+
 body.fade-out{
     animation:fadeOut 1s forwards;
 }
@@ -38,15 +43,21 @@ body.fade-out{
     }
 }
 
+/* LOGIN BOX */
+
 .login-box{
-    width:350px;
-    padding:40px;
-    border-radius:25px;
+    width:360px;
+    padding:45px;
+    border-radius:30px;
     background:#e0e5ec;
+
     box-shadow:
-        10px 10px 20px #b8bec7,
-        -10px -10px 20px #ffffff;
+        15px 15px 30px #b8bec7,
+        -15px -15px 30px #ffffff;
+
     animation:fadeIn 1s ease;
+
+    text-align:center;
 }
 
 @keyframes fadeIn{
@@ -60,11 +71,77 @@ body.fade-out{
     }
 }
 
-.login-box h2{
-    text-align:center;
-    margin-bottom:30px;
-    color:#333;
+/* ANIMASI BULAT */
+
+.loader-wrapper{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
 }
+
+.loader{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    position:relative;
+
+    background:#e0e5ec;
+
+    box-shadow:
+        10px 10px 20px #b8bec7,
+        -10px -10px 20px #ffffff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.loader::before{
+    content:"";
+    position:absolute;
+
+    width:55px;
+    height:55px;
+    border-radius:50%;
+
+    border:5px solid transparent;
+    border-top:5px solid #ff8c42;
+    border-right:5px solid #ffb26b;
+
+    animation:spin 1.2s linear infinite;
+}
+
+.loader::after{
+    content:"";
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:#ff9f5a;
+
+    box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,0.5),
+        inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+@keyframes spin{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* TITLE */
+
+.login-box h2{
+    margin-bottom:30px;
+    color:#4b5563;
+    font-weight:600;
+    letter-spacing:0.5px;
+}
+
+/* INPUT */
 
 .input-box{
     margin-bottom:20px;
@@ -75,98 +152,160 @@ body.fade-out{
     padding:15px;
     border:none;
     outline:none;
-    border-radius:15px;
+    border-radius:18px;
     background:#e0e5ec;
+
     box-shadow:
         inset 5px 5px 10px #b8bec7,
         inset -5px -5px 10px #ffffff;
-    font-size:16px;
+
+    font-size:15px;
+    color:#5f6773;
 }
+
+.input-box input::placeholder{
+    color:#9aa3af;
+}
+
+/* BUTTON */
 
 button{
     width:100%;
     padding:15px;
     border:none;
-    border-radius:15px;
+    border-radius:18px;
     background:#e0e5ec;
     cursor:pointer;
     font-size:16px;
-    font-weight:bold;
-    color:#333;
+    font-weight:600;
+    color:#5f6773;
+
     box-shadow:
         5px 5px 10px #b8bec7,
         -5px -5px 10px #ffffff;
-    transition:0.2s;
+
+    transition:0.25s;
 }
 
 button:hover{
     transform:scale(0.98);
+
     box-shadow:
         inset 5px 5px 10px #b8bec7,
         inset -5px -5px 10px #ffffff;
 }
 
+/* FOOTER */
+
 .footer{
-    margin-top:20px;
+    margin-top:25px;
     text-align:center;
-    color:#666;
-    font-size:14px;
+    color:#9aa3af;
+    font-size:13px;
+    font-weight:400;
 }
 
+/* ERROR */
+
 #error{
-    color:red;
+    color:#ff6b6b;
     text-align:center;
     margin-top:15px;
     font-size:14px;
 }
+
+/* RESPONSIVE */
+
+@media(max-width:480px){
+
+    .login-box{
+        width:90%;
+        padding:35px 25px;
+    }
+
+    .loader{
+        width:60px;
+        height:60px;
+    }
+
+    .loader::before{
+        width:48px;
+        height:48px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="login-box">
+
+    <!-- ANIMASI BULAT -->
+
+    <div class="loader-wrapper">
+
+        <div class="loader"></div>
+
+    </div>
+
     <h2>EllenioFam App</h2>
 
     <div class="input-box">
-        <input type="text" id="username" placeholder="Username">
+
+        <input type="text"
+        id="username"
+        placeholder="Username">
+
     </div>
 
     <div class="input-box">
-        <input type="password" id="password" placeholder="Password">
+
+        <input type="password"
+        id="password"
+        placeholder="Password">
+
     </div>
 
-    <button onclick="login()">LOG IN</button>
+    <button onclick="login()">
+        LOG IN
+    </button>
 
     <div id="error"></div>
 
     <div class="footer">
         created by evanjusephca
     </div>
+
 </div>
 
 <script>
+
 function login(){
 
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    let username =
+    document.getElementById("username").value;
 
-    if(username === "ellenio" && password === "admin1234"){
+    let password =
+    document.getElementById("password").value;
 
-        // animasi transisi
+    if(username === "ellenio" &&
+       password === "admin1234"){
+
         document.body.classList.add("fade-out");
 
-        // pindah halaman setelah animasi selesai
         setTimeout(() => {
             window.location.href = "home.html";
         }, 1000);
 
-    } else {
+    }else{
 
         document.getElementById("error").innerHTML =
         "Username atau Password salah!";
 
     }
 }
+
 </script>
 
 </body>
