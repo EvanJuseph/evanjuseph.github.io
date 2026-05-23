@@ -355,10 +355,7 @@ nav a:hover{
     justify-content:center;
     align-items:center;
 
-    font-size:22px;
     cursor:pointer;
-
-    color:white;
 
     box-shadow:
         0 4px 15px rgba(0,0,0,0.12);
@@ -373,6 +370,50 @@ nav a:hover{
 
     box-shadow:
         0 8px 20px rgba(0,0,0,0.18);
+}
+
+/* ICON SVG */
+
+.float-item svg{
+    width:26px;
+    height:26px;
+
+    stroke:#ff9f5a;
+    stroke-width:2.2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+
+    transition:0.35s ease;
+}
+
+/* DARK MODE ICON */
+
+.dark-icon:hover svg{
+    transform:
+        rotate(-15deg)
+        scale(1.15);
+
+    filter:
+        drop-shadow(0 0 6px rgba(255,159,90,0.8))
+        drop-shadow(0 0 12px rgba(255,159,90,0.5));
+}
+
+/* LOCK ICON */
+
+.lock-icon:hover svg{
+    transform:
+        translateY(-2px)
+        scale(1.12);
+
+    filter:
+        drop-shadow(0 0 6px rgba(255,159,90,0.8))
+        drop-shadow(0 0 12px rgba(255,159,90,0.5));
+}
+
+/* CLICK EFFECT */
+
+.float-item:active svg{
+    transform:scale(0.92);
 }
 
 /* DARK MODE */
@@ -443,17 +484,6 @@ body.dark-mode .box p{
 
 #arrow.rotate{
     transform:rotate(180deg);
-}
-
-/* DESKTOP */
-
-@media(min-width:1200px){
-
-    .parallax{
-        background-size:100% auto;
-        background-position:center center;
-    }
-
 }
 
 /* RESPONSIVE */
@@ -568,54 +598,6 @@ body.dark-mode .box p{
 
         </div>
 
-        <!-- DATA EVAN -->
-
-        <div id="evanData" class="family-data">
-
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">NPWP</div>
-                <div class="ktp-card">SIM</div>
-                <div class="ktp-card">IJAZAH</div>
-                <div class="ktp-card">BPJS</div>
-                <div class="ktp-card">SERTIFIKAT</div>
-
-            </div>
-
-        </div>
-
-        <!-- DATA ELLENIO -->
-
-        <div id="ellenioData" class="family-data">
-
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">AKTA</div>
-                <div class="ktp-card">BPJS</div>
-
-            </div>
-
-        </div>
-
-        <!-- DATA CAMY -->
-
-        <div id="camyData" class="family-data">
-
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">AKTA</div>
-                <div class="ktp-card">RAPORT</div>
-
-            </div>
-
-        </div>
-
     </div>
 
 </section>
@@ -642,17 +624,40 @@ body.dark-mode .box p{
 
     <div class="floating-options" id="floatingOptions">
 
-        <div class="float-item" onclick="toggleDarkMode()">
-            🌙
+        <!-- DARK MODE -->
+
+        <div class="float-item dark-icon"
+        onclick="toggleDarkMode()">
+
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M21 12.8A9 9 0 1111.2 3
+                7 7 0 0021 12.8Z"/>
+            </svg>
+
         </div>
 
-        <div class="float-item" onclick="goLogin()">
-            🔒
+        <!-- LOCK -->
+
+        <div class="float-item lock-icon"
+        onclick="goLogin()">
+
+            <svg viewBox="0 0 24 24" fill="none">
+                <rect x="5" y="11"
+                width="14"
+                height="10"
+                rx="3"/>
+
+                <path d="M8 11V8a4 4 0 118 0v3"/>
+            </svg>
+
         </div>
 
     </div>
 
-    <div class="floating-btn" onclick="toggleMenu()">
+    <!-- BUTTON -->
+
+    <div class="floating-btn"
+    onclick="toggleMenu()">
         +
     </div>
 
@@ -680,20 +685,12 @@ function showData(name, element){
     document.getElementById("selectedText")
     .innerHTML = element.innerHTML;
 
-    const allData =
-    document.querySelectorAll(".family-data");
-
-    allData.forEach(item=>{
-        item.classList.remove("show");
-    });
-
-    document.getElementById(name + "Data")
-    .classList.add("show");
-
-    document.getElementById("dropdownContent")
+    document
+    .getElementById("dropdownContent")
     .classList.remove("show");
 
-    document.getElementById("arrow")
+    document
+    .getElementById("arrow")
     .classList.remove("rotate");
 }
 
