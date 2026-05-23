@@ -21,6 +21,7 @@
 body{
     background:#e0e5ec;
     color:#6b7280;
+    transition:0.4s ease;
 }
 
 /* NAVBAR */
@@ -40,6 +41,8 @@ nav{
     box-shadow:
         5px 5px 10px #b8bec7,
         -5px -5px 10px #ffffff;
+
+    transition:0.4s ease;
 }
 
 nav a{
@@ -118,6 +121,8 @@ nav a:hover{
     box-shadow:
         10px 10px 20px #b8bec7,
         -10px -10px 20px #ffffff;
+
+    transition:0.4s ease;
 }
 
 .box h2{
@@ -131,7 +136,7 @@ nav a:hover{
     font-weight:400;
 }
 
-/* DROPDOWN MODERN */
+/* DROPDOWN */
 
 .dropdown{
     max-width:400px;
@@ -163,12 +168,6 @@ nav a:hover{
 
 .dropdown-header:hover{
     transform:translateY(-3px) scale(1.01);
-
-    box-shadow:
-        16px 16px 30px #b8bec7,
-        -16px -16px 30px #ffffff,
-        inset 1px 1px 2px rgba(255,255,255,0.7),
-        inset -1px -1px 2px rgba(0,0,0,0.05);
 }
 
 .dropdown-content{
@@ -182,7 +181,6 @@ nav a:hover{
         margin-top 0.3s ease;
 
     margin-top:0;
-
     border-radius:20px;
 }
 
@@ -254,6 +252,149 @@ nav a:hover{
     transform:translateY(-5px) scale(1.03);
 }
 
+/* FLOATING MENU */
+
+.floating-menu{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:9999;
+}
+
+/* MAIN BUTTON */
+
+.floating-btn{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#e0e5ec;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:32px;
+    color:#5f6773;
+    cursor:pointer;
+
+    box-shadow:
+        10px 10px 20px #b8bec7,
+        -10px -10px 20px #ffffff;
+
+    transition:0.35s ease;
+}
+
+.floating-btn:hover{
+    transform:scale(0.95) rotate(90deg);
+
+    box-shadow:
+        inset 5px 5px 10px #b8bec7,
+        inset -5px -5px 10px #ffffff;
+}
+
+/* OPTIONS */
+
+.floating-options{
+    position:absolute;
+    bottom:85px;
+    right:0;
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(20px);
+
+    transition:0.35s ease;
+}
+
+.floating-options.show{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(0);
+}
+
+/* ITEM */
+
+.float-item{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#e0e5ec;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:22px;
+    cursor:pointer;
+
+    box-shadow:
+        8px 8px 16px #b8bec7,
+        -8px -8px 16px #ffffff;
+
+    transition:0.3s ease;
+}
+
+.float-item:hover{
+    transform:scale(0.92);
+
+    box-shadow:
+        inset 5px 5px 10px #b8bec7,
+        inset -5px -5px 10px #ffffff;
+}
+
+/* DARK MODE */
+
+body.dark-mode{
+    background:#1f2937;
+    color:#d1d5db;
+}
+
+body.dark-mode nav{
+    background:rgba(31,41,55,0.9);
+
+    box-shadow:
+        5px 5px 10px #111827,
+        -5px -5px 10px #374151;
+}
+
+body.dark-mode .box,
+body.dark-mode .dropdown-header,
+body.dark-mode .dropdown-content div,
+body.dark-mode .ktp-card,
+body.dark-mode .floating-btn,
+body.dark-mode .float-item{
+    background:#1f2937;
+    color:#d1d5db;
+
+    box-shadow:
+        10px 10px 20px #111827,
+        -10px -10px 20px #374151;
+}
+
+body.dark-mode .dropdown-content div:hover,
+body.dark-mode .ktp-card:hover,
+body.dark-mode .floating-btn:hover,
+body.dark-mode .float-item:hover{
+    box-shadow:
+        inset 5px 5px 10px #111827,
+        inset -5px -5px 10px #374151;
+}
+
+body.dark-mode nav a,
+body.dark-mode .box h2,
+body.dark-mode .ktp-card,
+body.dark-mode .dropdown-header{
+    color:#e5e7eb;
+}
+
+body.dark-mode .box p{
+    color:#9ca3af;
+}
+
 /* ANIMATION */
 
 @keyframes fadeIn{
@@ -286,7 +427,7 @@ nav a:hover{
     transform:rotate(180deg);
 }
 
-/* DESKTOP FLEXIBLE */
+/* DESKTOP */
 
 @media(min-width:1200px){
 
@@ -379,8 +520,6 @@ nav a:hover{
             Pilih nama anggota keluarga untuk melihat data dokumen.
         </p>
 
-        <!-- DROPDOWN -->
-
         <div class="dropdown">
 
             <div class="dropdown-header" onclick="toggleDropdown()">
@@ -417,40 +556,13 @@ nav a:hover{
 
             <div class="ktp-container">
 
-                <div class="ktp-card"
-                onclick="window.open('https://google.com')">
-                    KTP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://drive.google.com')">
-                    KK
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://github.com')">
-                    NPWP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://youtube.com')">
-                    SIM
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://facebook.com')">
-                    IJAZAH
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://instagram.com')">
-                    BPJS
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://x.com')">
-                    SERTIFIKAT
-                </div>
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">KK</div>
+                <div class="ktp-card">NPWP</div>
+                <div class="ktp-card">SIM</div>
+                <div class="ktp-card">IJAZAH</div>
+                <div class="ktp-card">BPJS</div>
+                <div class="ktp-card">SERTIFIKAT</div>
 
             </div>
 
@@ -462,25 +574,10 @@ nav a:hover{
 
             <div class="ktp-container">
 
-                <div class="ktp-card"
-                onclick="window.open('https://google.com')">
-                    KTP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://drive.google.com')">
-                    KK
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://github.com')">
-                    AKTA
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://youtube.com')">
-                    BPJS
-                </div>
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">KK</div>
+                <div class="ktp-card">AKTA</div>
+                <div class="ktp-card">BPJS</div>
 
             </div>
 
@@ -492,25 +589,10 @@ nav a:hover{
 
             <div class="ktp-container">
 
-                <div class="ktp-card"
-                onclick="window.open('https://google.com')">
-                    KTP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://drive.google.com')">
-                    KK
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://github.com')">
-                    AKTA
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://youtube.com')">
-                    RAPORT
-                </div>
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">KK</div>
+                <div class="ktp-card">AKTA</div>
+                <div class="ktp-card">RAPORT</div>
 
             </div>
 
@@ -535,6 +617,28 @@ nav a:hover{
     </div>
 
 </section>
+
+<!-- FLOATING MENU -->
+
+<div class="floating-menu">
+
+    <div class="floating-options" id="floatingOptions">
+
+        <div class="float-item" onclick="toggleDarkMode()">
+            🌙
+        </div>
+
+        <div class="float-item" onclick="goLogin()">
+            🔒
+        </div>
+
+    </div>
+
+    <div class="floating-btn" onclick="toggleMenu()">
+        +
+    </div>
+
+</div>
 
 <!-- SCRIPT -->
 
@@ -573,6 +677,29 @@ function showData(name, element){
 
     document.getElementById("arrow")
     .classList.remove("rotate");
+}
+
+/* FLOATING MENU */
+
+function toggleMenu(){
+
+    document
+    .getElementById("floatingOptions")
+    .classList.toggle("show");
+}
+
+/* DARK MODE */
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark-mode");
+}
+
+/* BACK LOGIN */
+
+function goLogin(){
+
+    window.location.href = "index.html";
 }
 
 </script>
