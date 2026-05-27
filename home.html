@@ -130,40 +130,32 @@ nav a:hover{
 .slider-container{
     width:100%;
     display:flex;
-    flex-direction:column;
+    justify-content:center;
     align-items:center;
-    margin-top:40px;
-    margin-bottom:40px;
-}
 
-.slider-title{
-    margin-bottom:40px;
-}
-
-.slider-title h1{
-    font-size:48px;
-    color:#5f6777;
-    font-weight:700;
-}
-
-.slider-title p{
     margin-top:10px;
-    color:#8c94a5;
+    margin-bottom:20px;
+
+    overflow:hidden;
 }
 
 .slider3d{
     position:relative;
-    width:320px;
-    height:430px;
+
+    width:260px;
+    height:360px;
+
     transform-style:preserve-3d;
     perspective:1000px;
 }
+
+/* CARD */
 
 .slider3d .card{
     position:absolute;
     width:100%;
     height:100%;
-    border-radius:35px;
+    border-radius:30px;
     overflow:hidden;
 
     transition:
@@ -171,8 +163,8 @@ nav a:hover{
     opacity 1s ease;
 
     box-shadow:
-    14px 14px 30px #c3cad4,
-    -14px -14px 30px #ffffff;
+    12px 12px 24px #c3cad4,
+    -12px -12px 24px #ffffff;
 }
 
 .slider3d .card img{
@@ -180,6 +172,8 @@ nav a:hover{
     height:100%;
     object-fit:cover;
 }
+
+/* OVERLAY */
 
 .overlay-card{
     position:absolute;
@@ -192,36 +186,38 @@ nav a:hover{
     );
 }
 
+/* CONTENT */
+
 .content-card{
     position:absolute;
-    bottom:30px;
-    left:25px;
-    right:25px;
+    bottom:25px;
+    left:20px;
+    right:20px;
     color:white;
     z-index:5;
 }
 
 .tag{
     display:inline-block;
-    margin-bottom:15px;
-    padding:8px 18px;
+    margin-bottom:12px;
+    padding:7px 16px;
     border-radius:50px;
 
     background:rgba(255,255,255,.12);
 
     backdrop-filter:blur(10px);
 
-    font-size:13px;
+    font-size:12px;
 }
 
 .content-card h2{
-    font-size:32px;
-    margin-bottom:10px;
+    font-size:26px;
+    margin-bottom:8px;
 }
 
 .content-card p{
-    font-size:14px;
-    line-height:1.6;
+    font-size:13px;
+    line-height:1.5;
 }
 
 /* POSITIONS */
@@ -239,64 +235,34 @@ nav a:hover{
 
 .slider3d .card.left{
     transform:
-    translateX(-180px)
-    translateZ(-120px)
-    rotateY(35deg)
-    scale(.85);
+    translateX(-140px)
+    translateZ(-100px)
+    rotateY(30deg)
+    scale(.82);
 
     z-index:3;
-    opacity:.7;
+    opacity:.55;
 }
 
 .slider3d .card.right{
     transform:
-    translateX(180px)
-    translateZ(-120px)
-    rotateY(-35deg)
-    scale(.85);
+    translateX(140px)
+    translateZ(-100px)
+    rotateY(-30deg)
+    scale(.82);
 
     z-index:3;
-    opacity:.7;
+    opacity:.55;
 }
 
 .slider3d .card.hidden{
     transform:
     translateX(0)
-    translateZ(-250px)
+    translateZ(-220px)
     scale(.6);
 
     opacity:0;
     z-index:1;
-}
-
-/* BUTTON */
-
-.buttons{
-    margin-top:45px;
-    display:flex;
-    gap:20px;
-}
-
-.btn{
-    width:65px;
-    height:65px;
-    border:none;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:24px;
-    color:#5f6777;
-
-    background:#dfe7f2;
-
-    box-shadow:
-    10px 10px 20px #c5ccd6,
-    -10px -10px 20px #ffffff;
-
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:scale(1.08);
 }
 
 /* DROPDOWN */
@@ -595,28 +561,32 @@ body.dark-mode .ktp-card{
     }
 
     .slider3d{
-        width:260px;
-        height:360px;
+        width:220px;
+        height:310px;
     }
 
     .slider3d .card.left{
         transform:
-        translateX(-120px)
-        translateZ(-100px)
-        rotateY(35deg)
-        scale(.8);
+        translateX(-95px)
+        translateZ(-90px)
+        rotateY(28deg)
+        scale(.78);
     }
 
     .slider3d .card.right{
         transform:
-        translateX(120px)
-        translateZ(-100px)
-        rotateY(-35deg)
-        scale(.8);
+        translateX(95px)
+        translateZ(-90px)
+        rotateY(-28deg)
+        scale(.78);
     }
 
-    .slider-title h1{
-        font-size:36px;
+    .content-card h2{
+        font-size:22px;
+    }
+
+    .content-card p{
+        font-size:12px;
     }
 }
 
@@ -657,16 +627,6 @@ body.dark-mode .ktp-card{
 <section class="section">
 
     <div class="slider-container">
-
-        <div class="slider-title">
-
-            <h1>Neumorphism 3D Slider</h1>
-
-            <p>
-                Rotating floating card animation
-            </p>
-
-        </div>
 
         <div class="slider3d">
 
@@ -757,20 +717,6 @@ body.dark-mode .ktp-card{
                 </div>
 
             </div>
-
-        </div>
-
-        <div class="buttons">
-
-            <button class="btn"
-            onclick="prev()">
-                ❮
-            </button>
-
-            <button class="btn"
-            onclick="next()">
-                ❯
-            </button>
 
         </div>
 
