@@ -6,7 +6,7 @@
 
 <title>EllenioFam</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -22,6 +22,7 @@ body{
     background:#e0e5ec;
     color:#6b7280;
     transition:0.4s ease;
+    overflow-x:hidden;
 }
 
 /* NAVBAR */
@@ -41,8 +42,6 @@ nav{
     box-shadow:
         5px 5px 10px #b8bec7,
         -5px -5px 10px #ffffff;
-
-    transition:0.4s ease;
 }
 
 nav a{
@@ -74,8 +73,6 @@ nav a:hover{
     text-align:center;
     padding:20px;
 
-    position:relative;
-
     margin-bottom:20px;
 }
 
@@ -84,23 +81,21 @@ nav a:hover{
     padding:40px;
     border-radius:25px;
     color:white;
-    animation:fadeIn 1.5s ease;
 
     backdrop-filter:blur(5px);
+
+    animation:fadeIn 1.5s ease;
 }
 
 .overlay h1{
     font-size:50px;
     margin-bottom:20px;
-    font-weight:600;
-    letter-spacing:1px;
 }
 
 .overlay p{
     max-width:700px;
     line-height:1.8;
     font-size:18px;
-    font-weight:300;
 }
 
 /* SECTION */
@@ -121,19 +116,187 @@ nav a:hover{
     box-shadow:
         10px 10px 20px #b8bec7,
         -10px -10px 20px #ffffff;
-
-    transition:0.4s ease;
 }
 
 .box h2{
     margin-bottom:20px;
     color:#4b5563;
-    font-weight:600;
 }
 
-.box p{
-    color:#6b7280;
-    font-weight:400;
+/* ========================= */
+/* 3D SLIDER */
+/* ========================= */
+
+.slider-container{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+
+.slider-title{
+    margin-bottom:40px;
+}
+
+.slider-title h1{
+    font-size:48px;
+    color:#5f6777;
+    font-weight:700;
+}
+
+.slider-title p{
+    margin-top:10px;
+    color:#8c94a5;
+}
+
+.slider3d{
+    position:relative;
+    width:320px;
+    height:430px;
+    transform-style:preserve-3d;
+    perspective:1000px;
+}
+
+.slider3d .card{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:35px;
+    overflow:hidden;
+
+    transition:
+    transform 1s ease,
+    opacity 1s ease;
+
+    box-shadow:
+    14px 14px 30px #c3cad4,
+    -14px -14px 30px #ffffff;
+}
+
+.slider3d .card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay-card{
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.1)
+    );
+}
+
+.content-card{
+    position:absolute;
+    bottom:30px;
+    left:25px;
+    right:25px;
+    color:white;
+    z-index:5;
+}
+
+.tag{
+    display:inline-block;
+    margin-bottom:15px;
+    padding:8px 18px;
+    border-radius:50px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    font-size:13px;
+}
+
+.content-card h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.content-card p{
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* POSITIONS */
+
+.slider3d .card.center{
+    transform:
+    translateX(0)
+    translateZ(0)
+    rotateY(0deg)
+    scale(1);
+
+    z-index:5;
+    opacity:1;
+}
+
+.slider3d .card.left{
+    transform:
+    translateX(-180px)
+    translateZ(-120px)
+    rotateY(35deg)
+    scale(.85);
+
+    z-index:3;
+    opacity:.7;
+}
+
+.slider3d .card.right{
+    transform:
+    translateX(180px)
+    translateZ(-120px)
+    rotateY(-35deg)
+    scale(.85);
+
+    z-index:3;
+    opacity:.7;
+}
+
+.slider3d .card.hidden{
+    transform:
+    translateX(0)
+    translateZ(-250px)
+    scale(.6);
+
+    opacity:0;
+    z-index:1;
+}
+
+/* BUTTON */
+
+.buttons{
+    margin-top:45px;
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:24px;
+    color:#5f6777;
+
+    background:#dfe7f2;
+
+    box-shadow:
+    10px 10px 20px #c5ccd6,
+    -10px -10px 20px #ffffff;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
 }
 
 /* DROPDOWN */
@@ -155,19 +318,9 @@ nav a:hover{
     justify-content:space-between;
     align-items:center;
 
-    border:1px solid rgba(255,255,255,0.4);
-
     box-shadow:
         12px 12px 24px #b8bec7,
-        -12px -12px 24px #ffffff,
-        inset 1px 1px 2px rgba(255,255,255,0.7),
-        inset -1px -1px 2px rgba(0,0,0,0.05);
-
-    transition:0.35s ease;
-}
-
-.dropdown-header:hover{
-    transform:translateY(-3px) scale(1.01);
+        -12px -12px 24px #ffffff;
 }
 
 .dropdown-content{
@@ -176,11 +329,9 @@ nav a:hover{
     opacity:0;
 
     transition:
-        max-height 0.6s ease,
-        opacity 0.5s ease,
-        margin-top 0.3s ease;
+        max-height .6s ease,
+        opacity .5s ease;
 
-    margin-top:0;
     border-radius:20px;
 }
 
@@ -201,11 +352,11 @@ nav a:hover{
     box-shadow:
         -8px -8px 15px #e0e5ec;
 
-    transition:0.3s;
+    transition:.3s;
 }
 
 .dropdown-content div:hover{
-    transform:scale(0.98);
+    transform:scale(.98);
 
     box-shadow:
         inset 5px 5px 10px #b8bec7,
@@ -216,7 +367,7 @@ nav a:hover{
 
 .family-data{
     display:none;
-    animation:fadeData 0.7s ease;
+    animation:fadeData .7s ease;
 }
 
 .family-data.show{
@@ -241,7 +392,7 @@ nav a:hover{
     font-weight:500;
     color:#5f6773;
     cursor:pointer;
-    transition:0.3s;
+    transition:.3s;
 
     box-shadow:
         10px 10px 20px #b8bec7,
@@ -261,8 +412,6 @@ nav a:hover{
     z-index:9999;
 }
 
-/* MAIN BUTTON */
-
 .floating-btn{
     width:65px;
     height:65px;
@@ -271,7 +420,6 @@ nav a:hover{
     background:rgba(255,255,255,0.18);
 
     backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
 
     border:1px solid rgba(255,255,255,0.25);
 
@@ -286,14 +434,14 @@ nav a:hover{
     box-shadow:
         0 8px 24px rgba(0,0,0,0.15);
 
-    transition:0.35s ease;
+    transition:.35s ease;
 }
 
 .floating-btn:hover{
-    transform:scale(0.95) rotate(90deg);
+    transform:scale(.95) rotate(90deg);
 }
 
-/* GLASSMORPHISM POPUP */
+/* POPUP */
 
 .floating-options{
     position:absolute;
@@ -311,21 +459,17 @@ nav a:hover{
     background:rgba(255,255,255,0.15);
 
     backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
 
     border:1px solid rgba(255,255,255,0.25);
-
-    box-shadow:
-        0 8px 32px rgba(31,38,135,0.15);
 
     opacity:0;
     pointer-events:none;
 
     transform:
         translateY(20px)
-        scale(0.9);
+        scale(.9);
 
-    transition:0.35s ease;
+    transition:.35s ease;
 }
 
 .floating-options.show{
@@ -337,7 +481,7 @@ nav a:hover{
         scale(1);
 }
 
-/* ITEM */
+/* ICON BUTTON */
 
 .float-item{
     width:58px;
@@ -347,7 +491,6 @@ nav a:hover{
     background:rgba(255,255,255,0.18);
 
     backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
 
     border:1px solid rgba(255,255,255,0.2);
 
@@ -357,22 +500,8 @@ nav a:hover{
 
     cursor:pointer;
 
-    box-shadow:
-        0 4px 15px rgba(0,0,0,0.12);
-
-    transition:0.3s ease;
+    transition:.3s ease;
 }
-
-.float-item:hover{
-    transform:scale(0.92);
-
-    background:rgba(255,255,255,0.28);
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,0.18);
-}
-
-/* ICON SVG */
 
 .float-item svg{
     width:26px;
@@ -380,13 +509,9 @@ nav a:hover{
 
     stroke:#ff9f5a;
     stroke-width:2.2;
-    stroke-linecap:round;
-    stroke-linejoin:round;
 
-    transition:0.35s ease;
+    transition:.35s ease;
 }
-
-/* DARK MODE ICON */
 
 .dark-icon:hover svg{
     transform:
@@ -394,11 +519,8 @@ nav a:hover{
         scale(1.15);
 
     filter:
-        drop-shadow(0 0 6px rgba(255,159,90,0.8))
-        drop-shadow(0 0 12px rgba(255,159,90,0.5));
+        drop-shadow(0 0 6px rgba(255,159,90,0.8));
 }
-
-/* LOCK ICON */
 
 .lock-icon:hover svg{
     transform:
@@ -406,27 +528,13 @@ nav a:hover{
         scale(1.12);
 
     filter:
-        drop-shadow(0 0 6px rgba(255,159,90,0.8))
-        drop-shadow(0 0 12px rgba(255,159,90,0.5));
-}
-
-.float-item:active svg{
-    transform:scale(0.92);
+        drop-shadow(0 0 6px rgba(255,159,90,0.8));
 }
 
 /* DARK MODE */
 
 body.dark-mode{
     background:#1f2937;
-    color:#d1d5db;
-}
-
-body.dark-mode nav{
-    background:rgba(31,41,55,0.9);
-
-    box-shadow:
-        5px 5px 10px #111827,
-        -5px -5px 10px #374151;
 }
 
 body.dark-mode .box,
@@ -439,17 +547,6 @@ body.dark-mode .ktp-card{
     box-shadow:
         10px 10px 20px #111827,
         -10px -10px 20px #374151;
-}
-
-body.dark-mode nav a,
-body.dark-mode .box h2,
-body.dark-mode .ktp-card,
-body.dark-mode .dropdown-header{
-    color:#e5e7eb;
-}
-
-body.dark-mode .box p{
-    color:#9ca3af;
 }
 
 /* ANIMATION */
@@ -476,25 +573,17 @@ body.dark-mode .box p{
     }
 }
 
-#arrow{
-    transition:0.4s;
-}
-
 #arrow.rotate{
     transform:rotate(180deg);
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
 @media(max-width:768px){
 
     nav{
         gap:20px;
         font-size:14px;
-    }
-
-    .overlay{
-        padding:30px;
     }
 
     .overlay h1{
@@ -505,18 +594,29 @@ body.dark-mode .box p{
         font-size:16px;
     }
 
-    .parallax{
-        background-size:cover;
-        background-position:center;
-        background-attachment:fixed;
+    .slider3d{
+        width:260px;
+        height:360px;
     }
 
-    .section{
-        padding:30px 20px;
+    .slider3d .card.left{
+        transform:
+        translateX(-120px)
+        translateZ(-100px)
+        rotateY(35deg)
+        scale(.8);
     }
 
-    .box{
-        padding:30px 20px;
+    .slider3d .card.right{
+        transform:
+        translateX(120px)
+        translateZ(-100px)
+        rotateY(-35deg)
+        scale(.8);
+    }
+
+    .slider-title h1{
+        font-size:36px;
     }
 }
 
@@ -524,6 +624,8 @@ body.dark-mode .box p{
 </head>
 
 <body>
+
+<!-- NAVBAR -->
 
 <nav>
 
@@ -533,6 +635,8 @@ body.dark-mode .box p{
 
 </nav>
 
+<!-- HERO -->
+
 <section class="parallax" id="beranda">
 
     <div class="overlay">
@@ -541,14 +645,140 @@ body.dark-mode .box p{
 
         <p>
             Selamat datang di website Ellenio Family App.
-            Website ini merupakan website keluarga,
-            yang menyimpan beberapa dokumen penting dari
-            setiap anggota keluarga.
+            Website ini merupakan website keluarga.
         </p>
 
     </div>
 
 </section>
+
+<!-- 3D SLIDER -->
+
+<section class="section">
+
+    <div class="slider-container">
+
+        <div class="slider-title">
+
+            <h1>Neumorphism 3D Slider</h1>
+
+            <p>
+                Rotating floating card animation
+            </p>
+
+        </div>
+
+        <div class="slider3d">
+
+            <div class="card center">
+
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200">
+
+                <div class="overlay-card"></div>
+
+                <div class="content-card">
+
+                    <div class="tag">
+                        Gaming
+                    </div>
+
+                    <h2>Cyber City</h2>
+
+                    <p>
+                        Elegant neumorphism slider.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="card right">
+
+                <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200">
+
+                <div class="overlay-card"></div>
+
+                <div class="content-card">
+
+                    <div class="tag">
+                        Sci-Fi
+                    </div>
+
+                    <h2>Galaxy Zone</h2>
+
+                    <p>
+                        Futuristic dashboard.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="card hidden">
+
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200">
+
+                <div class="overlay-card"></div>
+
+                <div class="content-card">
+
+                    <div class="tag">
+                        Racing
+                    </div>
+
+                    <h2>Speed Drive</h2>
+
+                    <p>
+                        Premium floating effect.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="card left">
+
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200">
+
+                <div class="overlay-card"></div>
+
+                <div class="content-card">
+
+                    <div class="tag">
+                        Adventure
+                    </div>
+
+                    <h2>Dark Forest</h2>
+
+                    <p>
+                        Cinematic perspective.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="btn"
+            onclick="prev()">
+                ❮
+            </button>
+
+            <button class="btn"
+            onclick="next()">
+                ❯
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DATA -->
 
 <section class="section" id="keluarga">
 
@@ -556,13 +786,10 @@ body.dark-mode .box p{
 
         <h2>Data Keluarga</h2>
 
-        <p style="margin-bottom:30px;">
-            Pilih nama anggota keluarga untuk melihat data dokumen.
-        </p>
-
         <div class="dropdown">
 
-            <div class="dropdown-header" onclick="toggleDropdown()">
+            <div class="dropdown-header"
+            onclick="toggleDropdown()">
 
                 <span id="selectedText">
                     -- Choose --
@@ -572,17 +799,18 @@ body.dark-mode .box p{
 
             </div>
 
-            <div class="dropdown-content" id="dropdownContent">
+            <div class="dropdown-content"
+            id="dropdownContent">
 
-                <div onclick="showData('evan', this)">
+                <div onclick="showData('evan',this)">
                     Evan Jusephca
                 </div>
 
-                <div onclick="showData('ellenio', this)">
+                <div onclick="showData('ellenio',this)">
                     Ruth Camy Therecia
                 </div>
 
-                <div onclick="showData('camy', this)">
+                <div onclick="showData('camy',this)">
                     Ellenio Athreus
                 </div>
 
@@ -590,106 +818,47 @@ body.dark-mode .box p{
 
         </div>
 
-        <!-- DATA EVAN -->
+        <!-- EVAN -->
 
-        <div id="evanData" class="family-data">
+        <div id="evanData"
+        class="family-data">
 
             <div class="ktp-container">
 
-                <div class="ktp-card"
-                onclick="window.open('https://google.com')">
-                    KTP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://drive.google.com')">
-                    KK
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://github.com')">
-                    NPWP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://youtube.com')">
-                    SIM
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://facebook.com')">
-                    IJAZAH
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://instagram.com')">
-                    BPJS
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://x.com')">
-                    SERTIFIKAT
-                </div>
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">KK</div>
+                <div class="ktp-card">NPWP</div>
+                <div class="ktp-card">SIM</div>
 
             </div>
 
         </div>
 
-        <!-- DATA ELLENIO -->
+        <!-- ELLENIO -->
 
-        <div id="ellenioData" class="family-data">
+        <div id="ellenioData"
+        class="family-data">
 
             <div class="ktp-container">
 
-                <div class="ktp-card"
-                onclick="window.open('https://google.com')">
-                    KTP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://drive.google.com')">
-                    KK
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://github.com')">
-                    AKTA
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://youtube.com')">
-                    BPJS
-                </div>
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">KK</div>
+                <div class="ktp-card">AKTA</div>
 
             </div>
 
         </div>
 
-        <!-- DATA CAMY -->
+        <!-- CAMY -->
 
-        <div id="camyData" class="family-data">
+        <div id="camyData"
+        class="family-data">
 
             <div class="ktp-container">
 
-                <div class="ktp-card"
-                onclick="window.open('https://google.com')">
-                    KTP
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://drive.google.com')">
-                    KK
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://github.com')">
-                    AKTA
-                </div>
-
-                <div class="ktp-card"
-                onclick="window.open('https://youtube.com')">
-                    RAPORT
-                </div>
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">KK</div>
+                <div class="ktp-card">RAPORT</div>
 
             </div>
 
@@ -698,6 +867,8 @@ body.dark-mode .box p{
     </div>
 
 </section>
+
+<!-- ABOUT -->
 
 <section class="section" id="tentang">
 
@@ -717,9 +888,10 @@ body.dark-mode .box p{
 
 <div class="floating-menu">
 
-    <div class="floating-options" id="floatingOptions">
+    <div class="floating-options"
+    id="floatingOptions">
 
-        <!-- DARK MODE -->
+        <!-- DARK -->
 
         <div class="float-item dark-icon"
         onclick="toggleDarkMode()">
@@ -759,22 +931,23 @@ body.dark-mode .box p{
 
 <script>
 
+/* DROPDOWN */
+
 function toggleDropdown(){
 
-    const dropdown =
-    document.getElementById("dropdownContent");
+    document
+    .getElementById("dropdownContent")
+    .classList.toggle("show");
 
-    const arrow =
-    document.getElementById("arrow");
-
-    dropdown.classList.toggle("show");
-
-    arrow.classList.toggle("rotate");
+    document
+    .getElementById("arrow")
+    .classList.toggle("rotate");
 }
 
 function showData(name, element){
 
-    document.getElementById("selectedText")
+    document
+    .getElementById("selectedText")
     .innerHTML = element.innerHTML;
 
     const allData =
@@ -784,7 +957,8 @@ function showData(name, element){
         item.classList.remove("show");
     });
 
-    document.getElementById(name + "Data")
+    document
+    .getElementById(name + "Data")
     .classList.add("show");
 
     document
@@ -812,12 +986,55 @@ function toggleDarkMode(){
     document.body.classList.toggle("dark-mode");
 }
 
-/* BACK LOGIN */
+/* LOGIN */
 
 function goLogin(){
 
-    window.location.href = "index.html";
+    window.location.href =
+    "index.html";
 }
+
+/* 3D SLIDER */
+
+const cards =
+document.querySelectorAll('.slider3d .card');
+
+let positions =
+['center','right','hidden','left'];
+
+function updateCards(){
+
+    cards.forEach((card,index)=>{
+
+        card.className =
+        'card ' + positions[index];
+
+    });
+}
+
+function next(){
+
+    positions.push(
+        positions.shift()
+    );
+
+    updateCards();
+}
+
+function prev(){
+
+    positions.unshift(
+        positions.pop()
+    );
+
+    updateCards();
+}
+
+setInterval(()=>{
+
+    next();
+
+},4000);
 
 </script>
 
