@@ -123,6 +123,19 @@ nav a:hover{
     color:#4b5563;
 }
 
+/* INTRO TEXT */
+
+.intro-text{
+    max-width:700px;
+    margin:0 auto 35px auto;
+
+    color:#7b8494;
+    line-height:1.8;
+    font-size:15px;
+
+    animation:fadeSmooth 1.4s ease;
+}
+
 /* DROPDOWN */
 
 .dropdown{
@@ -415,6 +428,20 @@ body.dark-mode .ktp-card{
     }
 }
 
+/* SMOOTH PARAGRAPH */
+
+@keyframes fadeSmooth{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
 #arrow.rotate{
     transform:rotate(180deg);
 }
@@ -434,6 +461,10 @@ body.dark-mode .ktp-card{
 
     .overlay p{
         font-size:16px;
+    }
+
+    .intro-text{
+        font-size:14px;
     }
 }
 
@@ -472,6 +503,15 @@ body.dark-mode .ktp-card{
     <div class="box">
 
         <h2>Data Keluarga</h2>
+
+        <!-- PARAGRAPH -->
+
+        <p class="intro-text">
+            Pilih anggota keluarga untuk melihat
+            data dokumen seperti KTP, KK,
+            NPWP, AKTA, RAPORT dan dokumen lainnya
+            dengan tampilan neumorphism modern.
+        </p>
 
         <div class="dropdown">
 
