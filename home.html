@@ -118,22 +118,25 @@ nav a:hover{
         -10px -10px 20px #ffffff;
 }
 
-/* TITLE INHERIT */
+/* TITLE ENGRAVED */
 
 .box h2{
+
     margin-bottom:20px;
 
-    color:#8b93a1;
+    color:#97a0af;
 
     font-weight:600;
 
     letter-spacing:0.5px;
 
     text-shadow:
-        1px 1px 1px #ffffff,
-        -1px -1px 1px #b8bec7;
+        1px 1px 1px rgba(255,255,255,0.85),
+        -1px -1px 1px rgba(163,177,198,0.35);
 
-    opacity:0.9;
+    filter:contrast(0.95);
+
+    opacity:0.95;
 }
 
 /* DROPDOWN */
@@ -638,8 +641,6 @@ function showData(name, element){
     .classList.remove("rotate");
 }
 
-/* FLOATING MENU */
-
 function toggleMenu(){
 
     document
@@ -647,14 +648,10 @@ function toggleMenu(){
     .classList.toggle("show");
 }
 
-/* DARK MODE */
-
 function toggleDarkMode(){
 
     document.body.classList.toggle("dark-mode");
 }
-
-/* LOGIN */
 
 function goLogin(){
 
