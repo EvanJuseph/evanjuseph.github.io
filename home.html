@@ -216,15 +216,33 @@ nav a:hover{
     font-weight:500;
     color:#5f6773;
     cursor:pointer;
-    transition:.3s;
+    transition:.25s ease;
 
     box-shadow:
         10px 10px 20px #b8bec7,
         -10px -10px 20px #ffffff;
 }
 
+/* HOVER */
+
 .ktp-card:hover{
-    transform:translateY(-5px) scale(1.03);
+
+    transform:scale(.98);
+
+    box-shadow:
+        inset 6px 6px 12px #b8bec7,
+        inset -6px -6px 12px #ffffff;
+}
+
+/* CLICK */
+
+.ktp-card:active{
+
+    transform:scale(.96);
+
+    box-shadow:
+        inset 8px 8px 16px #b8bec7,
+        inset -8px -8px 16px #ffffff;
 }
 
 /* FLOATING MENU */
