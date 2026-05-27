@@ -124,6 +124,53 @@ nav a:hover{
 }
 
 /* ========================= */
+/* SLIDER BOX NEUMORPHISM */
+/* ========================= */
+
+.slider-box{
+
+    max-width:900px;
+    margin:auto;
+
+    padding:50px 20px;
+
+    border-radius:35px;
+
+    background:#e0e5ec;
+
+    box-shadow:
+        14px 14px 28px #b8bec7,
+        -14px -14px 28px #ffffff;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+/* glow */
+
+.slider-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    background:
+    radial-gradient(
+        rgba(255,255,255,0.6),
+        transparent
+    );
+
+    top:-120px;
+    left:-120px;
+
+    border-radius:50%;
+}
+
+/* ========================= */
 /* 3D SLIDER */
 /* ========================= */
 
@@ -132,9 +179,6 @@ nav a:hover{
     display:flex;
     justify-content:center;
     align-items:center;
-
-    margin-top:10px;
-    margin-bottom:20px;
 
     overflow:hidden;
 }
@@ -504,6 +548,7 @@ body.dark-mode{
 }
 
 body.dark-mode .box,
+body.dark-mode .slider-box,
 body.dark-mode .dropdown-header,
 body.dark-mode .dropdown-content div,
 body.dark-mode .ktp-card{
@@ -565,6 +610,11 @@ body.dark-mode .ktp-card{
         height:310px;
     }
 
+    .slider-box{
+        padding:35px 10px;
+        border-radius:28px;
+    }
+
     .slider3d .card.left{
         transform:
         translateX(-95px)
@@ -595,8 +645,6 @@ body.dark-mode .ktp-card{
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
     <a href="#beranda">Beranda</a>
@@ -604,8 +652,6 @@ body.dark-mode .ktp-card{
     <a href="#tentang">Tentang</a>
 
 </nav>
-
-<!-- HERO -->
 
 <section class="parallax" id="beranda">
 
@@ -622,97 +668,101 @@ body.dark-mode .ktp-card{
 
 </section>
 
-<!-- 3D SLIDER -->
+<!-- SLIDER -->
 
 <section class="section">
 
-    <div class="slider-container">
+    <div class="slider-box">
 
-        <div class="slider3d">
+        <div class="slider-container">
 
-            <div class="card center">
+            <div class="slider3d">
 
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200">
+                <div class="card center">
 
-                <div class="overlay-card"></div>
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200">
 
-                <div class="content-card">
+                    <div class="overlay-card"></div>
 
-                    <div class="tag">
-                        Gaming
+                    <div class="content-card">
+
+                        <div class="tag">
+                            Gaming
+                        </div>
+
+                        <h2>Cyber City</h2>
+
+                        <p>
+                            Elegant neumorphism slider.
+                        </p>
+
                     </div>
-
-                    <h2>Cyber City</h2>
-
-                    <p>
-                        Elegant neumorphism slider.
-                    </p>
 
                 </div>
 
-            </div>
+                <div class="card right">
 
-            <div class="card right">
+                    <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200">
 
-                <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200">
+                    <div class="overlay-card"></div>
 
-                <div class="overlay-card"></div>
+                    <div class="content-card">
 
-                <div class="content-card">
+                        <div class="tag">
+                            Sci-Fi
+                        </div>
 
-                    <div class="tag">
-                        Sci-Fi
+                        <h2>Galaxy Zone</h2>
+
+                        <p>
+                            Futuristic dashboard.
+                        </p>
+
                     </div>
-
-                    <h2>Galaxy Zone</h2>
-
-                    <p>
-                        Futuristic dashboard.
-                    </p>
 
                 </div>
 
-            </div>
+                <div class="card hidden">
 
-            <div class="card hidden">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200">
 
-                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200">
+                    <div class="overlay-card"></div>
 
-                <div class="overlay-card"></div>
+                    <div class="content-card">
 
-                <div class="content-card">
+                        <div class="tag">
+                            Racing
+                        </div>
 
-                    <div class="tag">
-                        Racing
+                        <h2>Speed Drive</h2>
+
+                        <p>
+                            Premium floating effect.
+                        </p>
+
                     </div>
-
-                    <h2>Speed Drive</h2>
-
-                    <p>
-                        Premium floating effect.
-                    </p>
 
                 </div>
 
-            </div>
+                <div class="card left">
 
-            <div class="card left">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200">
 
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200">
+                    <div class="overlay-card"></div>
 
-                <div class="overlay-card"></div>
+                    <div class="content-card">
 
-                <div class="content-card">
+                        <div class="tag">
+                            Adventure
+                        </div>
 
-                    <div class="tag">
-                        Adventure
+                        <h2>Dark Forest</h2>
+
+                        <p>
+                            Cinematic perspective.
+                        </p>
+
                     </div>
-
-                    <h2>Dark Forest</h2>
-
-                    <p>
-                        Cinematic perspective.
-                    </p>
 
                 </div>
 
@@ -764,8 +814,6 @@ body.dark-mode .ktp-card{
 
         </div>
 
-        <!-- EVAN -->
-
         <div id="evanData"
         class="family-data">
 
@@ -780,8 +828,6 @@ body.dark-mode .ktp-card{
 
         </div>
 
-        <!-- ELLENIO -->
-
         <div id="ellenioData"
         class="family-data">
 
@@ -794,8 +840,6 @@ body.dark-mode .ktp-card{
             </div>
 
         </div>
-
-        <!-- CAMY -->
 
         <div id="camyData"
         class="family-data">
@@ -813,8 +857,6 @@ body.dark-mode .ktp-card{
     </div>
 
 </section>
-
-<!-- ABOUT -->
 
 <section class="section" id="tentang">
 
@@ -837,8 +879,6 @@ body.dark-mode .ktp-card{
     <div class="floating-options"
     id="floatingOptions">
 
-        <!-- DARK -->
-
         <div class="float-item dark-icon"
         onclick="toggleDarkMode()">
 
@@ -847,8 +887,6 @@ body.dark-mode .ktp-card{
             </svg>
 
         </div>
-
-        <!-- LOCK -->
 
         <div class="float-item lock-icon"
         onclick="goLogin()">
@@ -962,15 +1000,6 @@ function next(){
 
     positions.push(
         positions.shift()
-    );
-
-    updateCards();
-}
-
-function prev(){
-
-    positions.unshift(
-        positions.pop()
     );
 
     updateCards();
