@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -654,46 +655,49 @@ body.dark-mode .profile-card{
             NPWP, AKTA, RAPORT dan dokumen lainnya
         </p>
 
-    </div>
+        <div class="dropdown">
 
-</section>
+            <div class="dropdown-header"
+            onclick="toggleDropdown()">
 
-<p class="paragraf-satu fade-scroll">
-    Aplikasi ini juga menjadi bagian dari
-    pengembangan karya pribadi yang berkelanjutan.
-</p>
+                <span id="selectedText">
+                    -- Choose --
+                </span>
 
-<section class="section" id="tentang">
-
-    <div class="box fade-scroll">
-
-        <h2>Tentang</h2>
-
-        <p class="fade-scroll">
-            App Version 1.0.0
-            Develop by Evan Jusephca.
-        </p>
-
-        <div class="profile-card fade-scroll">
-
-            <div class="profile-image">
-
-                <img src="https://drive.google.com/thumbnail?id=11cW7OIr43TqWGPoMzfUZnbW8jejbbUpE&sz=w1000">
+                <span id="arrow">▼</span>
 
             </div>
 
-            <h3>Evan Jusephca</h3>
+            <div class="dropdown-content"
+            id="dropdownContent">
 
-            <div class="profile-role">
-                Developer & Creator
+                <div onclick="showData('evan',this)">
+                    Evan Jusephca
+                </div>
+
+                <div onclick="showData('ellenio',this)">
+                    Ruth Camy Therecia
+                </div>
+
+                <div onclick="showData('camy',this)">
+                    Ellenio Athreus
+                </div>
+
             </div>
 
-            <p class="profile-desc">
-                Pengembang EllenioFam sekaligus
-                creator website keluarga berbasis
-                neumorphism modern dan digital
-                archive pribadi.
-            </p>
+        </div>
+
+        <div id="evanData"
+        class="family-data">
+
+            <div class="ktp-container">
+
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">KK</div>
+                <div class="ktp-card">NPWP</div>
+                <div class="ktp-card">SIM</div>
+
+            </div>
 
         </div>
 
@@ -702,6 +706,43 @@ body.dark-mode .profile-card{
 </section>
 
 <script>
+
+function toggleDropdown(){
+
+    document
+    .getElementById("dropdownContent")
+    .classList.toggle("show");
+
+    document
+    .getElementById("arrow")
+    .classList.toggle("rotate");
+}
+
+function showData(name, element){
+
+    document
+    .getElementById("selectedText")
+    .innerHTML = element.innerHTML;
+
+    const allData =
+    document.querySelectorAll(".family-data");
+
+    allData.forEach(item=>{
+        item.classList.remove("show");
+    });
+
+    document
+    .getElementById(name + "Data")
+    .classList.add("show");
+
+    document
+    .getElementById("dropdownContent")
+    .classList.remove("show");
+
+    document
+    .getElementById("arrow")
+    .classList.remove("rotate");
+}
 
 /* SCROLL ANIMATION */
 
@@ -735,3 +776,4 @@ fadeElements.forEach(el=>{
 
 </body>
 </html>
+```
