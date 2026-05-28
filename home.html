@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -154,8 +153,24 @@ nav a:hover{
     color:#7b8494;
     line-height:1.8;
     font-size:15px;
+}
 
-    animation:fadeSmooth 1.4s ease;
+/* SCROLL FADE EFFECT */
+
+.fade-scroll{
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.fade-scroll.show{
+    opacity:1;
+
+    transform:translateY(0);
 }
 
 /* DROPDOWN */
@@ -564,18 +579,6 @@ body.dark-mode .profile-card{
     }
 }
 
-@keyframes fadeSmooth{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
 #arrow.rotate{
     transform:rotate(180deg);
 }
@@ -622,7 +625,7 @@ body.dark-mode .profile-card{
 
 <section class="parallax" id="beranda">
 
-    <div class="overlay">
+    <div class="overlay fade-scroll">
 
         <h1>Ellenio Family App</h1>
 
@@ -635,122 +638,48 @@ body.dark-mode .profile-card{
 
 </section>
 
-<p class="paragraf-satu"> 
+<p class="paragraf-satu fade-scroll"> 
     EllenioFam adalah arsip digital berbasis web untuk menyimpan berbagai data serta dokumen keluarga agar lebih mudah diakses darimanapun dan kapanpun.
 </p>
 
 <section class="section" id="keluarga">
 
-    <div class="box">
+    <div class="box fade-scroll">
 
         <h2>Data Keluarga</h2>
 
-        <p class="intro-text">
+        <p class="intro-text fade-scroll">
             Pilih anggota keluarga untuk melihat
             data dokumen seperti KTP, KK,
             NPWP, AKTA, RAPORT dan dokumen lainnya
         </p>
 
-        <div class="dropdown">
-
-            <div class="dropdown-header"
-            onclick="toggleDropdown()">
-
-                <span id="selectedText">
-                    -- Choose --
-                </span>
-
-                <span id="arrow">▼</span>
-
-            </div>
-
-            <div class="dropdown-content"
-            id="dropdownContent">
-
-                <div onclick="showData('evan',this)">
-                    Evan Jusephca
-                </div>
-
-                <div onclick="showData('ellenio',this)">
-                    Ruth Camy Therecia
-                </div>
-
-                <div onclick="showData('camy',this)">
-                    Ellenio Athreus
-                </div>
-
-            </div>
-
-        </div>
-
-        <div id="evanData"
-        class="family-data">
-
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">NPWP</div>
-                <div class="ktp-card">SIM</div>
-
-            </div>
-
-        </div>
-
-        <div id="ellenioData"
-        class="family-data">
-
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">AKTA</div>
-
-            </div>
-
-        </div>
-
-        <div id="camyData"
-        class="family-data">
-
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">RAPORT</div>
-
-            </div>
-
-        </div>
-
     </div>
 
 </section>
 
-<p class="paragraf-satu">
+<p class="paragraf-satu fade-scroll">
     Aplikasi ini juga menjadi bagian dari
     pengembangan karya pribadi yang berkelanjutan.
 </p>
 
 <section class="section" id="tentang">
 
-    <div class="box">
+    <div class="box fade-scroll">
 
         <h2>Tentang</h2>
 
-        <p>
+        <p class="fade-scroll">
             App Version 1.0.0
             Develop by Evan Jusephca.
         </p>
 
-        <!-- PROFILE CARD -->
-
-        <div class="profile-card">
+        <div class="profile-card fade-scroll">
 
             <div class="profile-image">
 
                 <img src="https://drive.google.com/thumbnail?id=11cW7OIr43TqWGPoMzfUZnbW8jejbbUpE&sz=w1000">
-                
+
             </div>
 
             <h3>Evan Jusephca</h3>
@@ -768,161 +697,41 @@ body.dark-mode .profile-card{
 
         </div>
 
-        <!-- SOCIAL MEDIA -->
-
-        <div class="social-box">
-
-            <!-- FACEBOOK -->
-
-            <a href="https://facebook.com/evan.juseph.31"
-            target="_blank"
-            class="social-item">
-
-                <svg viewBox="0 0 24 24"
-                style="fill:#1877f2;">
-
-                    <path d="M22 12A10 10 0 1010.5 21.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4H15c-1.2 0-1.6.8-1.6 1.5v1.8H16l-.4 2.9h-2.2v7A10 10 0 0022 12z"/>
-
-                </svg>
-
-            </a>
-
-            <!-- INSTAGRAM -->
-
-            <a href="https://instagram.com/evanjusephca31"
-            target="_blank"
-            class="social-item">
-
-                <svg viewBox="0 0 24 24"
-                style="fill:#e1306c;">
-
-                    <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A5.5 5.5 0 106 13a5.5 5.5 0 006-5.5zm0 2A3.5 3.5 0 1110.5 13 3.5 3.5 0 0112 9.5zm4.8-3.3a1.3 1.3 0 11-1.3 1.3 1.3 1.3 0 011.3-1.3z"/>
-
-                </svg>
-
-            </a>
-
-            <!-- WHATSAPP -->
-
-            <a href="https://wa.me/+6281251464947"
-            target="_blank"
-            class="social-item">
-
-                <svg viewBox="0 0 24 24"
-                style="fill:#25d366;">
-
-                    <path d="M20 3.9A11 11 0 003.2 17.4L2 22l4.8-1.2A11 11 0 1020 3.9zM12 20a8.8 8.8 0 01-4.5-1.2l-.3-.2-2.8.7.7-2.7-.2-.3A8.8 8.8 0 1112 20zm4.8-6.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.6.8c-.2.2-.4.2-.7.1a7.2 7.2 0 01-2.1-1.3 8 8 0 01-1.5-1.9c-.2-.3 0-.5.1-.7l.5-.6c.1-.2.2-.4.3-.6 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6a1.2 1.2 0 00-.9.4 3.6 3.6 0 00-1.1 2.6c0 1.5 1.1 3 1.2 3.2.2.2 2.2 3.5 5.3 4.8.7.3 1.3.5 1.8.6.8.3 1.5.2 2 .1.6-.1 1.7-.7 2-1.5.2-.7.2-1.3.1-1.5-.1-.2-.3-.3-.6-.4z"/>
-
-                </svg>
-
-            </a>
-
-        </div>
-
     </div>
 
 </section>
 
-<!-- FLOATING MENU -->
-
-<div class="floating-menu">
-
-    <div class="floating-options"
-    id="floatingOptions">
-
-        <div class="float-item dark-icon"
-        onclick="toggleDarkMode()">
-
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8Z"/>
-            </svg>
-
-        </div>
-
-        <div class="float-item lock-icon"
-        onclick="goLogin()">
-
-            <svg viewBox="0 0 24 24" fill="none">
-
-                <rect x="5" y="11"
-                width="14"
-                height="10"
-                rx="3"/>
-
-                <path d="M8 11V8a4 4 0 118 0v3"/>
-
-            </svg>
-
-        </div>
-
-    </div>
-
-    <div class="floating-btn"
-    onclick="toggleMenu()">
-        +
-    </div>
-
-</div>
-
 <script>
 
-function toggleDropdown(){
+/* SCROLL ANIMATION */
 
-    document
-    .getElementById("dropdownContent")
-    .classList.toggle("show");
+const fadeElements =
+document.querySelectorAll('.fade-scroll');
 
-    document
-    .getElementById("arrow")
-    .classList.toggle("rotate");
-}
+const observer =
+new IntersectionObserver((entries)=>{
 
-function showData(name, element){
+    entries.forEach(entry=>{
 
-    document
-    .getElementById("selectedText")
-    .innerHTML = element.innerHTML;
+        if(entry.isIntersecting){
 
-    const allData =
-    document.querySelectorAll(".family-data");
+            entry.target.classList.add('show');
 
-    allData.forEach(item=>{
-        item.classList.remove("show");
+        }else{
+
+            entry.target.classList.remove('show');
+        }
     });
 
-    document
-    .getElementById(name + "Data")
-    .classList.add("show");
+},{
+    threshold:0.15
+});
 
-    document
-    .getElementById("dropdownContent")
-    .classList.remove("show");
-
-    document
-    .getElementById("arrow")
-    .classList.remove("rotate");
-}
-
-function toggleMenu(){
-
-    document
-    .getElementById("floatingOptions")
-    .classList.toggle("show");
-}
-
-function toggleDarkMode(){
-
-    document.body.classList.toggle("dark-mode");
-}
-
-function goLogin(){
-
-    window.location.href =
-    "index.html";
-}
+fadeElements.forEach(el=>{
+    observer.observe(el);
+});
 
 </script>
 
 </body>
 </html>
-```
