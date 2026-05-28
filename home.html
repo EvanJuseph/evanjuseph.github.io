@@ -295,6 +295,61 @@ nav a:hover{
 }
 
 /* PROFILE CARD */
+.profile-image{
+    width:110px;
+    height:110px;
+
+    margin:0 auto 20px auto;
+
+    border-radius:50%;
+
+    overflow:visible;
+
+    position:relative;
+}
+/* RIPPLE PROFILE EFFECT */
+
+.profile-image::before,
+.profile-image::after{
+
+    content:'';
+
+    position:absolute;
+
+    inset:-8px;
+
+    border-radius:50%;
+
+    border:2px solid
+    rgba(255,255,255,0.45);
+
+    animation:rippleWave 3s infinite;
+
+    z-index:1;
+}
+
+.profile-image::after{
+
+    animation-delay:1.5s;
+}
+
+@keyframes rippleWave{
+
+    0%{
+        transform:scale(1);
+        opacity:.7;
+    }
+
+    70%{
+        transform:scale(1.35);
+        opacity:0;
+    }
+
+    100%{
+        transform:scale(1.45);
+        opacity:0;
+    }
+}
 
 .profile-card{
     max-width:320px;
@@ -706,10 +761,39 @@ body.dark-mode .profile-card{
 
             <div class="ktp-container">
 
+                <div class="ktp-card"><a href="https://drive.google.com/file/d/1aBoczpn1oVRRavwoUmDnHAfYWOdDMa1q/view?usp=sharing">Pas Foto</a></div>
                 <div class="ktp-card">KTP</div>
                 <div class="ktp-card">KK</div>
-                <div class="ktp-card">NPWP</div>
-                <div class="ktp-card">SIM</div>
+                <div class="ktp-card">AKTA LAHIR</div>
+                <div class="ktp-card">AKTA NIKAH</div>
+                <div class="ktp-card">DAFTAR GAJIH</div>
+                <div class="ktp-card">SK CPNS</div>
+                <div class="ktp-card">SIM-C</div>
+                <div class="ktp-card">ATM BRI</div>
+                <div class="ktp-card">ATM BANK KALTENG</div>
+                <div class="ktp-card">BPJS</div>
+                <div class="ktp-card">VAKSIN</div>
+                <div class="ktp-card">IJAZAH S1</div>
+
+            </div>
+
+        </div>
+
+        <div id="camyData"
+        class="family-data">
+
+            <div class="ktp-container">
+
+                <div class="ktp-card">Pas Foto</div>
+                <div class="ktp-card">KTP</div>
+                <div class="ktp-card">AKTA LAHIR</div>
+                <div class="ktp-card">AKTA NIKAH</div>
+                <div class="ktp-card">SIM-C</div>
+                <div class="ktp-card">ATM BRI</div>
+                <div class="ktp-card">ATM BANK KALTENG</div>
+                <div class="ktp-card">BPJS</div>
+                <div class="ktp-card">VAKSIN</div>
+                <div class="ktp-card">IJAZAH D3</div>
 
             </div>
 
@@ -721,20 +805,6 @@ body.dark-mode .profile-card{
             <div class="ktp-container">
 
                 <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">AKTA</div>
-
-            </div>
-
-        </div>
-
-        <div id="camyData"
-        class="family-data">
-
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
                 <div class="ktp-card">RAPORT</div>
 
             </div>
