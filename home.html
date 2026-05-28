@@ -158,6 +158,24 @@ nav a:hover{
     animation:fadeSmooth 1.4s ease;
 }
 
+/* FADE SCROLL PARAGRAPH */
+.fade-paragraph{
+    opacity:0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.fade-paragraph.show{
+    opacity:1;
+
+    transform:
+        translateY(0);
+}    
 /* DROPDOWN */
 
 .dropdown{
@@ -635,7 +653,7 @@ body.dark-mode .profile-card{
 
 </section>
 
-<p class="paragraf-satu"> 
+<p class="paragraf-satu fade-paragraph"> 
     EllenioFam adalah arsip digital berbasis web untuk menyimpan berbagai data serta dokumen keluarga agar lebih mudah diakses darimanapun dan kapanpun.
 </p>
 
@@ -727,7 +745,7 @@ body.dark-mode .profile-card{
 
 </section>
 
-<p class="paragraf-satu">
+<p class="paragraf-satu fade-paragraph">
     Aplikasi ini juga menjadi bagian dari
     pengembangan karya pribadi yang berkelanjutan.
 </p>
@@ -920,6 +938,41 @@ function goLogin(){
     window.location.href =
     "index.html";
 }
+
+</script>
+
+    <script>
+
+/* FADE PARAGRAPH SCROLL */
+
+const fadeParagraphs =
+document.querySelectorAll('.fade-paragraph');
+
+const paragraphObserver =
+new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('show');
+
+        }else{
+
+            entry.target.classList.remove('show');
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+fadeParagraphs.forEach(el=>{
+
+    paragraphObserver.observe(el);
+
+});
 
 </script>
 
