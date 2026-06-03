@@ -262,12 +262,16 @@ nav a:hover{
 /* CARD */
 
 .ktp-card{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:85px;
     padding:30px 20px;
     border-radius:20px;
     background:#e0e5ec;
     font-weight:500;
     color:#5f6773;
-    text-decoration: none;
+    text-decoration:none;
     cursor:pointer;
     transition:.25s ease;
 
@@ -292,6 +296,19 @@ nav a:hover{
     box-shadow:
         inset 8px 8px 16px #b8bec7,
         inset -8px -8px 16px #ffffff;
+}
+
+.ktp-card.disabled{
+    cursor:not-allowed;
+    opacity:.55;
+}
+
+.ktp-card.disabled:hover{
+    transform:none;
+
+    box-shadow:
+        10px 10px 20px #b8bec7,
+        -10px -10px 20px #ffffff;
 }
 
 /* PROFILE CARD */
@@ -803,55 +820,24 @@ body.dark-mode .profile-ripple{
         <div id="evanData"
         class="family-data">
 
-            <div class="ktp-container">
-
-                <div class="ktp-card"><a class="dokumen" href="https://drive.google.com/file/d/1aBoczpn1oVRRavwoUmDnHAfYWOdDMa1q/view?usp=sharing">Pas Foto</a></div>
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">KK</div>
-                <div class="ktp-card">AKTA LAHIR</div>
-                <div class="ktp-card">AKTA NIKAH</div>
-                <div class="ktp-card">DAFTAR GAJIH</div>
-                <div class="ktp-card">SK CPNS</div>
-                <div class="ktp-card">SIM-C</div>
-                <div class="ktp-card">ATM BRI</div>
-                <div class="ktp-card">ATM BANK KALTENG</div>
-                <div class="ktp-card">BPJS</div>
-                <div class="ktp-card">VAKSIN</div>
-                <div class="ktp-card">IJAZAH S1</div>
-
-            </div>
+            <div class="ktp-container"
+            data-documents="evan"></div>
 
         </div>
 
         <div id="camyData"
         class="family-data">
 
-            <div class="ktp-container">
-
-                <div class="ktp-card">Pas Foto</div>
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">AKTA LAHIR</div>
-                <div class="ktp-card">AKTA NIKAH</div>
-                <div class="ktp-card">SIM-C</div>
-                <div class="ktp-card">ATM BRI</div>
-                <div class="ktp-card">ATM BANK KALTENG</div>
-                <div class="ktp-card">BPJS</div>
-                <div class="ktp-card">VAKSIN</div>
-                <div class="ktp-card">IJAZAH D3</div>
-
-            </div>
+            <div class="ktp-container"
+            data-documents="camy"></div>
 
         </div>
 
         <div id="ellenioData"
         class="family-data">
 
-            <div class="ktp-container">
-
-                <div class="ktp-card">KTP</div>
-                <div class="ktp-card">RAPORT</div>
-
-            </div>
+            <div class="ktp-container"
+            data-documents="ellenio"></div>
 
         </div>
 
@@ -1001,6 +987,102 @@ body.dark-mode .profile-ripple{
 
 <script>
 
+const driveDocuments = {
+
+    evan:[
+        {
+            title:"Pas Foto",
+            url:"https://drive.google.com/file/d/1aBoczpn1oVRRavwoUmDnHAfYWOdDMa1q/view?usp=sharing"
+        },
+        { title:"KTP", url:"https://drive.google.com/file/d/1JsySuUYIjBAJjq86WFNuV0HDnS_9sBph/view?usp=sharing" },
+        { title:"KK", url:"https://drive.google.com/file/d/16FVHabH8WxYLBpFEAs1ZJlYuFKTfwowe/view?usp=sharing" },
+        { title:"AKTA LAHIR", url:"https://drive.google.com/file/d/10LwSZi8F0TqDzw2Gv50Do0Qb-ha3TpWz/view?usp=sharing" },
+        { title:"AKTA NIKAH", url:"https://drive.google.com/file/d/1XFDZEImhKEXpqsJfCcBJ2FpTCsYaSrRL/view?usp=sharing" },
+        { title:"DAFTAR GAJIH", url:"https://drive.google.com/file/d/1l6hXxFY0tbDEaVOFIpxjis6OoJsd0pBd/view?usp=sharing" },
+        { title:"SK CPNS", url:"https://drive.google.com/file/d/1fVsqnZaA1otAh3ZULYKj9flnFhOEhPZG/view?usp=sharing" },
+        { title:"SIM-C", url:"https://drive.google.com/file/d/1nRKCOpfPv-IcvkkuQ-SVKrn23skp_qpg/view?usp=sharing" },
+        { title:"ATM BRI", url:"https://drive.google.com/file/d/14TOMDIyLVI5ZluCeXWkfKtRZ5GnVGNIN/view?usp=sharing" },
+        { title:"Sertifikat", url:"https://drive.google.com/drive/folders/1ckj42YhYE7Y9c2Z2nPGH0ErgFBARPS4v?usp=drive_link" },
+        { title:"BPJS", url:"https://drive.google.com/file/d/120lElfpu-zkp2Gd9G8DOff979f9f4qVC/view?usp=sharing" },
+        { title:"VAKSIN", url:"https://drive.google.com/file/d/1MY-P19rLxo1BnP_tIXSk3ZJ3VHNqwZbp/view?usp=sharing" },
+        { title:"IJAZAH S1", url:"https://drive.google.com/file/d/1cuHeUb8vLdCihA7u9wAeMI7OyDAUWKF6/view?usp=sharing" }
+    ],
+
+    camy:[
+        { title:"Pas Foto", url:"" },
+        { title:"KTP", url:"" },
+        { title:"AKTA LAHIR", url:"" },
+        { title:"AKTA NIKAH", url:"" },
+        { title:"SIM-C", url:"" },
+        { title:"ATM BRI", url:"" },
+        { title:"ATM BANK KALTENG", url:"" },
+        { title:"BPJS", url:"" },
+        { title:"VAKSIN", url:"" },
+        { title:"IJAZAH D3", url:"" }
+    ],
+
+    ellenio:[
+        { title:"KTP", url:"" },
+        { title:"RAPORT", url:"" }
+    ]
+};
+
+function createDocumentCard(documentData){
+
+    const card =
+    document.createElement(documentData.url ? "a" : "div");
+
+    card.className =
+    documentData.url ? "ktp-card" : "ktp-card disabled";
+
+    card.textContent =
+    documentData.title;
+
+    if(documentData.url){
+
+        card.href =
+        documentData.url;
+
+        card.target =
+        "_blank";
+
+        card.rel =
+        "noopener noreferrer";
+
+    }else{
+
+        card.title =
+        "Link Google Drive belum tersedia";
+    }
+
+    return card;
+}
+
+function renderDriveDocuments(){
+
+    const documentContainers =
+    document.querySelectorAll("[data-documents]");
+
+    documentContainers.forEach(container=>{
+
+        const owner =
+        container.dataset.documents;
+
+        const documents =
+        driveDocuments[owner] || [];
+
+        container.innerHTML =
+        "";
+
+        documents.forEach(documentData=>{
+
+            container.appendChild(
+                createDocumentCard(documentData)
+            );
+        });
+    });
+}
+
 function toggleDropdown(){
 
     document
@@ -1055,6 +1137,8 @@ function goLogin(){
     window.location.href =
     "index.html";
 }
+
+renderDriveDocuments();
 
 </script>
 
