@@ -501,6 +501,9 @@ nav a:hover{
 }
 
 .social-item{
+    --led-color:#ff9f5a;
+    --led-soft:rgba(255,159,90,0.35);
+
     width:65px;
     height:65px;
 
@@ -514,6 +517,8 @@ nav a:hover{
 
     text-decoration:none;
 
+    position:relative;
+
     box-shadow:
         8px 8px 16px #b8bec7,
         -8px -8px 16px #ffffff;
@@ -521,7 +526,8 @@ nav a:hover{
     transition:.25s ease;
 }
 
-.social-item:hover{
+.social-item:hover,
+.social-item:active{
 
     transform:scale(.96);
 
@@ -534,11 +540,30 @@ nav a:hover{
     width:28px;
     height:28px;
 
+    position:relative;
+    z-index:2;
+
     transition:.3s;
 }
 
-.social-item:hover svg{
-    transform:scale(1.08);
+.social-item:hover svg,
+.social-item:active svg{
+    transform:scale(1.14);
+}
+
+.facebook-led{
+    --led-color:#1877f2;
+    --led-soft:rgba(24,119,242,0.45);
+}
+
+.instagram-led{
+    --led-color:#e1306c;
+    --led-soft:rgba(225,48,108,0.45);
+}
+
+.whatsapp-led{
+    --led-color:#25d366;
+    --led-soft:rgba(37,211,102,0.45);
 }
 
 /* FLOATING MENU */
@@ -674,27 +699,27 @@ nav a:hover{
 body.dark-mode{
     background:#1f2937;
 }
-    
+
 body.dark-mode .dropdown-content div{
- background:#1f2937;
+    background:#1f2937;
     color:#d1d5db;
-    
-     box-shadow:
+
+    box-shadow:
         10px 10px 20px #1f2937,
         -10px -10px 20px #1f2937;
 }
 
 body.dark-mode .dropdown-content div:hover{
- background:#1f2937;
+    background:#1f2937;
     color:#d1d5db;
-    
-     box-shadow:
+
+    box-shadow:
         inset 10px 10px 20px #111827,
         inset -4px -4px 8px #374151;
 }
-    
+
 body.dark-mode .ktp-card{
- background:#1f2937;
+    background:#1f2937;
     color:#d1d5db;
 
     box-shadow:
@@ -703,14 +728,14 @@ body.dark-mode .ktp-card{
 }
 
 body.dark-mode .ktp-card:hover{
- background:#1f2937;
+    background:#1f2937;
     color:#d1d5db;
 
     box-shadow:
         inset 10px 10px 20px #111827,
         inset -4px -4px 8px #374151;
 }
-    
+
 body.dark-mode .box,
 body.dark-mode .search-box input,
 body.dark-mode .dropdown-header,
@@ -731,6 +756,16 @@ body.dark-mode .social-item:hover{
     box-shadow:
         inset 10px 10px 20px #111827,
         inset -4px -4px 8px #374151;
+}
+
+body.dark-mode .social-item:hover svg,
+body.dark-mode .social-item:active svg{
+    filter:
+        brightness(1.35)
+        saturate(1.45)
+        drop-shadow(0 0 2px #ffffff)
+        drop-shadow(0 0 7px var(--led-color))
+        drop-shadow(0 0 14px var(--led-color));
 }
 
 body.dark-mode .search-box input{
@@ -1011,7 +1046,7 @@ body.dark-mode .profile-ripple{
 
             <a href="https://facebook.com/evan.juseph.31"
             target="_blank"
-            class="social-item">
+            class="social-item facebook-led">
 
                 <svg viewBox="0 0 24 24"
                 style="fill:#1877f2;">
@@ -1026,7 +1061,7 @@ body.dark-mode .profile-ripple{
 
             <a href="https://instagram.com/evanjusephca31"
             target="_blank"
-            class="social-item">
+            class="social-item instagram-led">
 
                 <svg viewBox="0 0 24 24"
                 style="fill:#e1306c;">
@@ -1041,7 +1076,7 @@ body.dark-mode .profile-ripple{
 
             <a href="https://wa.me/+6281251464947"
             target="_blank"
-            class="social-item">
+            class="social-item whatsapp-led">
 
                 <svg viewBox="0 0 24 24"
                 style="fill:#25d366;">
