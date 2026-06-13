@@ -180,21 +180,96 @@ nav a:hover{
 .search-box{
     max-width:400px;
     margin:22px auto 15px auto;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+}
+
+.search-toggle{
+    width:58px;
+    height:58px;
+    border:none;
+    border-radius:50%;
+    background:#e0e5ec;
+    color:#5f6773;
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+    z-index:2;
+    flex:0 0 58px;
+
+    box-shadow:
+        8px 8px 16px #b8bec7,
+        -8px -8px 16px #ffffff;
+
+    transition:.35s ease;
+}
+
+.search-toggle svg{
+    width:24px;
+    height:24px;
+    stroke:currentColor;
+    stroke-width:2.3;
+    fill:none;
+    transition:.35s ease;
+}
+
+.search-box:hover .search-toggle,
+.search-box:focus-within .search-toggle,
+.search-box.active .search-toggle{
+    transform:scale(.96);
+
+    box-shadow:
+        inset 6px 6px 12px #b8bec7,
+        inset -6px -6px 12px #ffffff;
+}
+
+.search-box:hover .search-toggle svg,
+.search-box:focus-within .search-toggle svg,
+.search-box.active .search-toggle svg{
+    transform:scale(1.08);
 }
 
 .search-box input{
-    width:100%;
-    padding:17px 25px;
+    width:58px;
+    height:58px;
+    padding:0 24px 0 70px;
     border:none;
     outline:none;
-    border-radius:20px;
+    border-radius:29px;
     background:#e0e5ec;
     color:#5f6773;
     font-size:15px;
 
+    position:absolute;
+    left:0;
+
+    opacity:0;
+    pointer-events:none;
+
     box-shadow:
         inset 7px 7px 14px #b8bec7,
         inset -7px -7px 14px #ffffff;
+
+    transition:
+        width .55s cubic-bezier(.2,.9,.2,1),
+        opacity .25s ease,
+        box-shadow .35s ease;
+}
+
+.search-box:hover input,
+.search-box:focus-within input,
+.search-box.active input{
+    width:100%;
+    opacity:1;
+    pointer-events:auto;
 }
 
 .search-box input::placeholder{
@@ -738,6 +813,7 @@ body.dark-mode .ktp-card:hover{
 
 body.dark-mode .box,
 body.dark-mode .search-box input,
+body.dark-mode .search-toggle,
 body.dark-mode .dropdown-header,
 body.dark-mode .social-item,
 body.dark-mode .profile-card{
@@ -772,6 +848,20 @@ body.dark-mode .search-box input{
     box-shadow:
         inset 7px 7px 14px #111827,
         inset -7px -7px 14px #374151;
+}
+
+body.dark-mode .search-toggle{
+    box-shadow:
+        8px 8px 16px #111827,
+        -4px -4px 8px #374151;
+}
+
+body.dark-mode .search-box:hover .search-toggle,
+body.dark-mode .search-box:focus-within .search-toggle,
+body.dark-mode .search-box.active .search-toggle{
+    box-shadow:
+        inset 7px 7px 14px #111827,
+        inset -4px -4px 8px #374151;
 }
 
 body.dark-mode .family-data-title{
@@ -916,9 +1006,21 @@ body.dark-mode .profile-ripple{
 
         <div class="search-box">
 
+            <button class="search-toggle"
+            onclick="openSearch()"
+            aria-label="Buka pencarian">
+
+                <svg viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M16.5 16.5L21 21"></path>
+                </svg>
+
+            </button>
+
             <input type="text"
             id="familySearch"
             placeholder="Cari nama dan dokumen, contoh: evan ktp"
+            onblur="closeSearch()"
             oninput="searchFamilyData()">
 
         </div>
@@ -1312,8 +1414,16 @@ function searchFamilyData(){
     const searchInput =
     document.getElementById("familySearch");
 
+    const searchBox =
+    searchInput.closest(".search-box");
+
     const searchTerm =
     searchInput.value.trim().toLowerCase();
+
+    searchBox.classList.toggle(
+        "active",
+        Boolean(searchTerm) || document.activeElement === searchInput
+    );
 
     const allData =
     document.querySelectorAll(".family-data");
@@ -1380,6 +1490,31 @@ function searchFamilyData(){
     document
     .getElementById("selectedText")
     .innerHTML = selectedFamilyLabel || "-- Choose --";
+}
+
+function openSearch(){
+
+    const searchBox =
+    document.querySelector(".search-box");
+
+    const searchInput =
+    document.getElementById("familySearch");
+
+    searchBox.classList.add("active");
+    searchInput.focus();
+}
+
+function closeSearch(){
+
+    const searchBox =
+    document.querySelector(".search-box");
+
+    const searchInput =
+    document.getElementById("familySearch");
+
+    if(!searchInput.value.trim()){
+        searchBox.classList.remove("active");
+    }
 }
 
 function toggleDropdown(){
