@@ -177,6 +177,30 @@ nav a:hover{
 }
 /* DROPDOWN */
 
+.search-box{
+    max-width:400px;
+    margin:22px auto 15px auto;
+}
+
+.search-box input{
+    width:100%;
+    padding:17px 25px;
+    border:none;
+    outline:none;
+    border-radius:20px;
+    background:#e0e5ec;
+    color:#5f6773;
+    font-size:15px;
+
+    box-shadow:
+        inset 7px 7px 14px #b8bec7,
+        inset -7px -7px 14px #ffffff;
+}
+
+.search-box input::placeholder{
+    color:#9aa3af;
+}
+
 .dropdown{
     max-width:400px;
     margin:40px auto;
@@ -247,6 +271,24 @@ nav a:hover{
 }
 
 .family-data.show{
+    display:block;
+}
+
+.family-data-title{
+    margin-top:22px;
+    color:#4b5563;
+    font-size:18px;
+    font-weight:600;
+}
+
+.search-empty{
+    display:none;
+    margin-top:25px;
+    color:#9aa3af;
+    font-size:14px;
+}
+
+.search-empty.show{
     display:block;
 }
 
@@ -634,6 +676,7 @@ body.dark-mode{
 }
 
 body.dark-mode .box,
+body.dark-mode .search-box input,
 body.dark-mode .dropdown-header,
 body.dark-mode .dropdown-content div,
 body.dark-mode .ktp-card,
@@ -645,6 +688,20 @@ body.dark-mode .profile-card{
     box-shadow:
         10px 10px 20px #111827,
         -10px -10px 20px #374151;
+}
+
+body.dark-mode .search-box input{
+    box-shadow:
+        inset 7px 7px 14px #111827,
+        inset -7px -7px 14px #374151;
+}
+
+body.dark-mode .family-data-title{
+    color:#d1d5db;
+}
+
+body.dark-mode .search-empty{
+    color:#9ca3af;
 }
 
 body.dark-mode .profile-image{
@@ -779,6 +836,15 @@ body.dark-mode .profile-ripple{
 
         <h2>Data Keluarga</h2>
 
+        <div class="search-box">
+
+            <input type="text"
+            id="familySearch"
+            placeholder="Cari nama dan dokumen, contoh: evan ktp"
+            oninput="searchFamilyData()">
+
+        </div>
+
         <p class="intro-text">
             Pilih anggota keluarga untuk melihat
             data dokumen seperti KTP, KK,
@@ -840,6 +906,11 @@ body.dark-mode .profile-ripple{
             data-documents="ellenio"></div>
 
         </div>
+
+        <p class="search-empty"
+        id="searchEmpty">
+            Data tidak ditemukan.
+        </p>
 
     </div>
 
@@ -1002,7 +1073,8 @@ const driveDocuments = {
         { title:"SK CPNS", url:"https://drive.google.com/file/d/1fVsqnZaA1otAh3ZULYKj9flnFhOEhPZG/view?usp=sharing" },
         { title:"SIM-C", url:"https://drive.google.com/file/d/1nRKCOpfPv-IcvkkuQ-SVKrn23skp_qpg/view?usp=sharing" },
         { title:"ATM BRI", url:"https://drive.google.com/file/d/14TOMDIyLVI5ZluCeXWkfKtRZ5GnVGNIN/view?usp=sharing" },
-        { title:"ATM BPD", url:"https://drive.google.com/file/d/ /view?usp=sharing" },
+        { title:"ATM BPD", url:"https://drive.google.com/file/d/1G7LFGfxERcvIygqXfXE0BR3jU2DvIx7O/view?usp=sharing" },
+        { title:"PLN SmartMeter", url:"https://drive.google.com/file/d/1TjIs68l8NASkRTC2ue0QlRSrFAGjSt7v/view?usp=sharing" },
         { title:"BPJS", url:"https://drive.google.com/file/d/120lElfpu-zkp2Gd9G8DOff979f9f4qVC/view?usp=sharing" },
         { title:"VAKSIN", url:"https://drive.google.com/file/d/1MY-P19rLxo1BnP_tIXSk3ZJ3VHNqwZbp/view?usp=sharing" },
         { title:"IJAZAH S1", url:"https://drive.google.com/file/d/1cuHeUb8vLdCihA7u9wAeMI7OyDAUWKF6/view?usp=sharing" },
@@ -1015,8 +1087,7 @@ const driveDocuments = {
         { title:"AKTA LAHIR", url:"https://drive.google.com/file/d//view?usp=sharing" },
         { title:"AKTA NIKAH", url:"https://drive.google.com/file/d/1XFDZEImhKEXpqsJfCcBJ2FpTCsYaSrRL/view?usp=sharing" },
         { title:"SIM-C", url:"https://drive.google.com/file/d//view?usp=sharing" },
-        { title:"ATM BRI", url:"https://drive.google.com/file/d//view?usp=sharing" },
-        { title:"ATM BANK KALTENG", url:"https://drive.google.com/file/d//view?usp=sharing" },
+        { title:"ATM BANK KALTENG", url:"https://drive.google.com/file/d/1oYQVhAhhfJhnVXZUKF-NBK-x9-XEI49s/view?usp=sharing" },
         { title:"BPJS", url:"https://drive.google.com/file/d/12dpybYjEMjMF-ENIHvmRs9TraIEPtg4n/view?usp=sharing" },
         { title:"VAKSIN", url:"https://drive.google.com/file/d/12DB0hXseANHBLwiL2FP--jmYPThqZC-Y/view?usp=sharing" },
         { title:"STR", url:"https://drive.google.com/file/d/1bScPpQ4v_qWA_DAJow7lvFikAjZ4flR2/view?usp=sharing" },
@@ -1030,18 +1101,39 @@ const driveDocuments = {
     ]
 };
 
+const familyLabels = {
+    evan:"Evan Jusephca",
+    camy:"Ruth Camy Therecia",
+    ellenio:"Ellenio Athreus"
+};
+
+let selectedFamily =
+"";
+
+let selectedFamilyLabel =
+"";
+
+function isValidDocumentUrl(url){
+
+    return url &&
+    !url.includes("/file/d//") &&
+    !url.includes("/file/d/ /");
+}
+
 function createDocumentCard(documentData){
 
     const card =
-    document.createElement(documentData.url ? "a" : "div");
+    document.createElement(
+        isValidDocumentUrl(documentData.url) ? "a" : "div"
+    );
 
     card.className =
-    documentData.url ? "ktp-card" : "ktp-card disabled";
+    isValidDocumentUrl(documentData.url) ? "ktp-card" : "ktp-card disabled";
 
     card.textContent =
     documentData.title;
 
-    if(documentData.url){
+    if(isValidDocumentUrl(documentData.url)){
 
         card.href =
         documentData.url;
@@ -1066,24 +1158,150 @@ function renderDriveDocuments(){
     const documentContainers =
     document.querySelectorAll("[data-documents]");
 
+    const searchInput =
+    document.getElementById("familySearch");
+
+    const searchTerm =
+    searchInput ? searchInput.value.trim().toLowerCase() : "";
+
+    const searchKeywords =
+    searchTerm.split(/\s+/).filter(keyword=>keyword);
+
     documentContainers.forEach(container=>{
 
         const owner =
         container.dataset.documents;
 
+        const familyName =
+        familyLabels[owner] || "";
+
         const documents =
         driveDocuments[owner] || [];
+
+        const filteredDocuments =
+        searchKeywords.length ?
+        documents.filter(documentData=>{
+
+            const searchableText =
+            `${familyName} ${documentData.title}`.toLowerCase();
+
+            return searchKeywords.every(keyword=>
+                searchableText.includes(keyword)
+            );
+        }) :
+        documents;
+
+        const familyData =
+        container.closest(".family-data");
+
+        let familyTitle =
+        familyData.querySelector(".family-data-title");
+
+        if(!familyTitle){
+
+            familyTitle =
+            document.createElement("h3");
+
+            familyTitle.className =
+            "family-data-title";
+
+            familyData.insertBefore(
+                familyTitle,
+                container
+            );
+        }
+
+        familyTitle.textContent =
+        familyName;
+
+        familyTitle.style.display =
+        searchKeywords.length ? "block" : "none";
 
         container.innerHTML =
         "";
 
-        documents.forEach(documentData=>{
+        filteredDocuments.forEach(documentData=>{
 
             container.appendChild(
                 createDocumentCard(documentData)
             );
         });
     });
+}
+
+function searchFamilyData(){
+
+    const searchInput =
+    document.getElementById("familySearch");
+
+    const searchTerm =
+    searchInput.value.trim().toLowerCase();
+
+    const allData =
+    document.querySelectorAll(".family-data");
+
+    const emptyMessage =
+    document.getElementById("searchEmpty");
+
+    renderDriveDocuments();
+
+    if(searchTerm){
+
+        document
+        .getElementById("selectedText")
+        .innerHTML = "Hasil pencarian";
+
+        document
+        .getElementById("dropdownContent")
+        .classList.remove("show");
+
+        document
+        .getElementById("arrow")
+        .classList.remove("rotate");
+
+        let hasResult =
+        false;
+
+        allData.forEach(item=>{
+
+            const container =
+            item.querySelector(".ktp-container");
+
+            if(container.children.length > 0){
+
+                item.classList.add("show");
+                hasResult = true;
+
+            }else{
+
+                item.classList.remove("show");
+            }
+        });
+
+        emptyMessage.classList.toggle(
+            "show",
+            !hasResult
+        );
+
+        return;
+    }
+
+    emptyMessage.classList.remove("show");
+
+    allData.forEach(item=>{
+        item.classList.remove("show");
+    });
+
+    if(selectedFamily){
+
+        document
+        .getElementById(selectedFamily + "Data")
+        .classList.add("show");
+    }
+
+    document
+    .getElementById("selectedText")
+    .innerHTML = selectedFamilyLabel || "-- Choose --";
 }
 
 function toggleDropdown(){
@@ -1098,6 +1316,18 @@ function toggleDropdown(){
 }
 
 function showData(name, element){
+
+    selectedFamily =
+    name;
+
+    selectedFamilyLabel =
+    element.innerHTML;
+
+    document
+    .getElementById("familySearch")
+    .value = "";
+
+    renderDriveDocuments();
 
     document
     .getElementById("selectedText")
@@ -1121,6 +1351,10 @@ function showData(name, element){
     document
     .getElementById("arrow")
     .classList.remove("rotate");
+
+    document
+    .getElementById("searchEmpty")
+    .classList.remove("show");
 }
 
 function toggleMenu(){
