@@ -221,6 +221,27 @@ nav a:hover{
     transition:.35s ease;
 }
 
+.search-hint{
+    margin-left:18px;
+    color:#9aa3af;
+    font-size:15px;
+    pointer-events:none;
+
+    position:relative;
+    z-index:1;
+
+    transition:
+        opacity .25s ease,
+        transform .35s ease;
+}
+
+.search-box:hover .search-hint,
+.search-box:focus-within .search-hint,
+.search-box.active .search-hint{
+    opacity:0;
+    transform:translateX(16px);
+}
+
 .search-box:hover .search-toggle,
 .search-box:focus-within .search-toggle,
 .search-box.active .search-toggle{
@@ -250,6 +271,7 @@ nav a:hover{
 
     position:absolute;
     left:0;
+    z-index:1;
 
     opacity:0;
     pointer-events:none;
@@ -856,6 +878,10 @@ body.dark-mode .search-toggle{
         -4px -4px 8px #374151;
 }
 
+body.dark-mode .search-hint{
+    color:#9ca3af;
+}
+
 body.dark-mode .search-box:hover .search-toggle,
 body.dark-mode .search-box:focus-within .search-toggle,
 body.dark-mode .search-box.active .search-toggle{
@@ -1007,6 +1033,7 @@ body.dark-mode .profile-ripple{
         <div class="search-box">
 
             <button class="search-toggle"
+            type="button"
             onclick="openSearch()"
             aria-label="Buka pencarian">
 
@@ -1016,6 +1043,10 @@ body.dark-mode .profile-ripple{
                 </svg>
 
             </button>
+
+            <span class="search-hint">
+                Pencarian...
+            </span>
 
             <input type="text"
             id="familySearch"
