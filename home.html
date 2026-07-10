@@ -58,14 +58,11 @@ nav a:hover{
 /* PARALLAX */
 
 .parallax{
+    --parallax-opacity:1;
+    --parallax-y:0px;
+    --overlay-y:0px;
+
     height:100vh;
-
-    background-image:url('https://drive.google.com/thumbnail?id=12nqktCOyda-U9lIwtYvJFVTNhIuO_QfN&sz=w2000');
-
-    background-attachment:fixed;
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-size:cover;
 
     display:flex;
     justify-content:center;
@@ -74,6 +71,33 @@ nav a:hover{
     padding:20px;
 
     margin-bottom:20px;
+
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+}
+
+.parallax::before{
+    content:'';
+    position:absolute;
+    inset:-8%;
+    z-index:0;
+
+    background-image:url('https://drive.google.com/thumbnail?id=12nqktCOyda-U9lIwtYvJFVTNhIuO_QfN&sz=w2000');
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+
+    opacity:var(--parallax-opacity);
+
+    transform:
+        translateY(var(--parallax-y))
+        scale(1.08);
+
+    transition:
+        opacity .12s linear,
+        transform .12s linear;
+    will-change:opacity, transform;
 }
 
 .overlay{
@@ -82,9 +106,22 @@ nav a:hover{
     border-radius:25px;
     color:white;
 
+    position:relative;
+    z-index:1;
+
     backdrop-filter:blur(5px);
 
     animation:fadeIn 1.5s ease;
+
+    opacity:var(--parallax-opacity);
+
+    transform:
+        translateY(var(--overlay-y));
+
+    transition:
+        opacity .12s linear,
+        transform .12s linear;
+    will-change:opacity, transform;
 }
 
 .overlay h1{
@@ -1624,6 +1661,75 @@ renderDriveDocuments();
 </script>
 
     <script>
+
+/* PARALLAX FADE SCROLL */
+
+const parallaxHero =
+document.querySelector('.parallax');
+
+let parallaxTicking =
+false;
+
+function updateParallaxFade(){
+
+    if(!parallaxHero){
+        return;
+    }
+
+    const scrollPosition =
+    window.scrollY;
+
+    const fadeDistance =
+    parallaxHero.offsetHeight * .9;
+
+    const progress =
+    Math.min(scrollPosition / fadeDistance, 1);
+
+    const opacity =
+    Math.max(1 - progress * 1.12, 0);
+
+    parallaxHero.style.setProperty(
+        '--parallax-opacity',
+        opacity.toFixed(3)
+    );
+
+    parallaxHero.style.setProperty(
+        '--parallax-y',
+        `${scrollPosition * .22}px`
+    );
+
+    parallaxHero.style.setProperty(
+        '--overlay-y',
+        `${scrollPosition * .1}px`
+    );
+
+    parallaxTicking =
+    false;
+}
+
+function requestParallaxFade(){
+
+    if(!parallaxTicking){
+
+        window.requestAnimationFrame(updateParallaxFade);
+
+        parallaxTicking =
+        true;
+    }
+}
+
+window.addEventListener(
+    'scroll',
+    requestParallaxFade,
+    { passive:true }
+);
+
+window.addEventListener(
+    'resize',
+    requestParallaxFade
+);
+
+updateParallaxFade();
 
 /* FADE PARAGRAPH SCROLL */
 
